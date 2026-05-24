@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">HTML deck mode preview</title>
+  <desc id="desc">Browser-based slide deck with keyboard navigation, static validation, and visual QA.</desc>
+  <rect width="1280" height="720" fill="#101214"/>
+  <rect x="50" y="46" width="1180" height="628" rx="22" fill="#171a1d" stroke="#31363a"/>
+  <rect x="88" y="84" width="1104" height="64" rx="12" fill="#0f1113" stroke="#31363a"/>
+  <circle cx="124" cy="116" r="9" fill="#ff5f57"/>
+  <circle cx="154" cy="116" r="9" fill="#ffbd2e"/>
+  <circle cx="184" cy="116" r="9" fill="#28c840"/>
+  <text x="226" y="123" font-family="SFMono-Regular, Consolas, monospace" font-size="16" fill="#b8b5ad">file:///deck/index.html#2</text>
+  <text x="90" y="220" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#7aa2ff">HTML DECK MODE</text>
+  <text x="90" y="304" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800" fill="#f7f4ef">Browser-native slides</text>
+  <text x="90" y="354" font-family="Inter, Arial, sans-serif" font-size="24" fill="#b8b5ad">Single-folder presentation output with keyboard navigation and static validators.</text>
+  <rect x="90" y="420" width="318" height="120" rx="10" fill="#0f1113" stroke="#31363a"/>
+  <text x="120" y="464" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f7f4ef">HTML Starter</text>
+  <text x="120" y="500" font-family="Inter, Arial, sans-serif" font-size="17" fill="#b8b5ad">template + sample slides</text>
+  <rect x="450" y="420" width="318" height="120" rx="10" fill="#0f1113" stroke="#31363a"/>
+  <text x="480" y="464" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f7f4ef">Validate</text>
+  <text x="480" y="500" font-family="Inter, Arial, sans-serif" font-size="17" fill="#b8b5ad">no placeholders, roles, titles</text>
+  <rect x="810" y="420" width="318" height="120" rx="10" fill="#0f1113" stroke="#31363a"/>
+  <text x="840" y="464" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f7f4ef">Preview</text>
+  <text x="840" y="500" font-family="Inter, Arial, sans-serif" font-size="17" fill="#b8b5ad">open locally, inspect visually</text>
+  <rect x="90" y="598" width="420" height="8" rx="4" fill="#0057ff"/>
+  <rect x="520" y="598" width="260" height="8" rx="4" fill="#31363a"/>
+  <text x="90" y="638" font-family="SFMono-Regular, Consolas, monospace" font-size="15" fill="#b8b5ad">python3 scripts/init_deck_project.py /tmp/kc-demo-deck</text>
+</svg>

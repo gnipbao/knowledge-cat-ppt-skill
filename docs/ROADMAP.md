@@ -1,21 +1,21 @@
 # Roadmap
 
-## 0.3.x - Public Repository Hardening
+## 0.4.x - Public Repository Hardening
 
 - Add final repository URL.
-- Add public screenshots for the sample HTML deck.
+- Add public mode preview images for native PPTX, HTML deck, and image-first PPTX.
 - Add a minimal native PPTX example when a stable renderer is selected.
 - Add failure fixtures for validators.
 - Add CI status badge after the repository is live.
 
-## 0.4.x - Output Examples
+## 0.5.x - Output Examples
 
 - Editable PPTX case study.
 - HTML keynote case study.
 - Image-first social carousel case study.
 - QA report for each case study.
 
-## 0.5.x - Stronger Validators
+## 0.6.x - Stronger Validators
 
 - HTML viewport screenshot checks.
 - Deck-plan to HTML slide-count and title matching.
@@ -28,4 +28,3 @@
 - Stable deck-plan JSON schema.
 - Public examples across all output lanes.
 - Release notes with migration guidance.
-

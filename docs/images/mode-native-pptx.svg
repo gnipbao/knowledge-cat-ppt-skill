@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Native PPTX mode preview</title>
+  <desc id="desc">Editable PowerPoint production mode with slide plan, charts, notes, and QA checks.</desc>
+  <rect width="1280" height="720" fill="#f7f4ef"/>
+  <rect x="52" y="52" width="1176" height="616" rx="22" fill="#ffffff" stroke="#d9d2c5"/>
+  <text x="90" y="110" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0057ff">NATIVE PPTX MODE</text>
+  <text x="90" y="178" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800" fill="#141414">Editable decks for real teams</text>
+  <text x="90" y="226" font-family="Inter, Arial, sans-serif" font-size="24" fill="#5f625f">Text, shapes, charts, speaker notes, and template logic stay editable.</text>
+  <rect x="90" y="282" width="360" height="236" rx="10" fill="#f1f5ff" stroke="#b8c7ff"/>
+  <text x="118" y="326" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#141414">Slide Plan</text>
+  <rect x="118" y="354" width="282" height="16" rx="8" fill="#0057ff"/>
+  <rect x="118" y="386" width="248" height="12" rx="6" fill="#9aa9d6"/>
+  <rect x="118" y="414" width="300" height="12" rx="6" fill="#9aa9d6"/>
+  <rect x="118" y="442" width="220" height="12" rx="6" fill="#9aa9d6"/>
+  <text x="118" y="490" font-family="SFMono-Regular, Consolas, monospace" font-size="15" fill="#5f625f">action title + evidence + notes</text>
+  <rect x="490" y="282" width="320" height="236" rx="10" fill="#fbfbfd" stroke="#d9d2c5"/>
+  <text x="520" y="326" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#141414">Editable Chart</text>
+  <rect x="528" y="450" width="38" height="34" fill="#0057ff"/>
+  <rect x="588" y="410" width="38" height="74" fill="#0057ff"/>
+  <rect x="648" y="364" width="38" height="120" fill="#0057ff"/>
+  <rect x="708" y="334" width="38" height="150" fill="#0057ff"/>
+  <line x1="520" y1="484" x2="770" y2="484" stroke="#141414" stroke-width="2"/>
+  <text x="520" y="502" font-family="SFMono-Regular, Consolas, monospace" font-size="13" fill="#5f625f">native chart objects</text>
+  <rect x="850" y="282" width="300" height="236" rx="10" fill="#f8faf8" stroke="#d9d2c5"/>
+  <text x="880" y="326" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#141414">QA Handoff</text>
+  <circle cx="894" cy="365" r="8" fill="#28a745"/>
+  <text x="914" y="372" font-family="Inter, Arial, sans-serif" font-size="18" fill="#141414">file opens</text>
+  <circle cx="894" cy="405" r="8" fill="#28a745"/>
+  <text x="914" y="412" font-family="Inter, Arial, sans-serif" font-size="18" fill="#141414">text selectable</text>
+  <circle cx="894" cy="445" r="8" fill="#28a745"/>
+  <text x="914" y="452" font-family="Inter, Arial, sans-serif" font-size="18" fill="#141414">notes included</text>
+  <text x="90" y="604" font-family="Inter, Arial, sans-serif" font-size="20" fill="#5f625f">Best for investor decks, consulting decks, board decks, training decks, and academic talks.</text>
+</svg>

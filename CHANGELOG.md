@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 - Chinese Docs And Mode Previews
+
+- Added Chinese documentation in `README_CN.md`.
+- Added bilingual documentation in `README_BILINGUAL.md`.
+- Added three local PNG mode preview images for native PPTX, HTML deck, and image-first PPTX.
+- Kept editable SVG preview sources under `docs/images/`.
+- Updated the main README with language links and visual mode previews.
+
 ## 0.3.0 - Repo-Ready Open Source Package
 
 - Added standalone repository packaging.

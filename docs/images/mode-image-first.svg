@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Image-first mode preview</title>
+  <desc id="desc">Visual-impact slide mode for social carousels, campaign decks, and keynote imagery.</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb703"/>
+      <stop offset="50%" stop-color="#ff5f57"/>
+      <stop offset="100%" stop-color="#0057ff"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#31363a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#f7f4ef"/>
+  <rect x="52" y="52" width="1176" height="616" rx="22" fill="#ffffff" stroke="#d9d2c5"/>
+  <rect x="84" y="84" width="480" height="552" rx="18" fill="url(#g1)"/>
+  <rect x="120" y="124" width="408" height="472" rx="12" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.45)"/>
+  <text x="148" y="182" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#ffffff">IMAGE-FIRST MODE</text>
+  <text x="148" y="270" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="900" fill="#ffffff">Visual impact</text>
+  <text x="148" y="318" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="900" fill="#ffffff">first</text>
+  <text x="148" y="370" font-family="Inter, Arial, sans-serif" font-size="20" fill="#ffffff">For social sharing and campaign rhythm.</text>
+  <circle cx="444" cy="510" r="44" fill="rgba(255,255,255,0.28)"/>
+  <circle cx="384" cy="522" r="26" fill="rgba(255,255,255,0.38)"/>
+  <text x="620" y="130" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0057ff">PROMPT PLAN + QA</text>
+  <text x="620" y="188" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800" fill="#141414">Visual-first decks,</text>
+  <text x="620" y="238" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800" fill="#141414">controlled tradeoffs</text>
+  <rect x="620" y="286" width="506" height="68" rx="10" fill="#f7f4ef" stroke="#d9d2c5"/>
+  <text x="650" y="328" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#141414">1. Prompt table before generation</text>
+  <rect x="620" y="380" width="506" height="68" rx="10" fill="#f7f4ef" stroke="#d9d2c5"/>
+  <text x="650" y="422" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#141414">2. Text safety and aspect checks</text>
+  <rect x="620" y="474" width="506" height="68" rx="10" fill="#f7f4ef" stroke="#d9d2c5"/>
+  <text x="650" y="516" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#141414">3. Prompt log saved for iteration</text>
+  <rect x="620" y="578" width="300" height="36" rx="18" fill="url(#g2)"/>
+  <text x="650" y="602" font-family="SFMono-Regular, Consolas, monospace" font-size="14" fill="#f7f4ef">social carousel / keynote</text>
+</svg>

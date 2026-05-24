@@ -2,9 +2,11 @@
 
 Story-first presentation production for AI agents.
 
+[English](README.md) | [简体中文](README_CN.md) | [Bilingual](README_BILINGUAL.md)
+
 Knowledge Cat PPT is an open-source Agent Skill for creating, reviewing, and repairing presentation decks. It is designed for Codex, Claude Code, and other skill-aware coding agents. Instead of acting like a generic "make pretty slides" prompt, it gives the agent a production system: clarify the audience shift, choose the right output lane, build a slide plan, generate the deck, and verify the result.
 
-Current version: `0.3.0`
+Current version: `0.4.0`
 
 ## Highlights
 
@@ -15,6 +17,13 @@ Current version: `0.3.0`
 - JSON deck-plan validator and HTML deck validator.
 - Open-source repository hygiene checks, GitHub Actions workflow, issue templates, and release checklist.
 - Compatible with both Codex local skills and Claude Code style skills.
+
+## Three Production Modes
+
+| Native PPTX | HTML Deck | Image-First PPTX |
+|---|---|---|
+| ![Native PPTX mode preview](docs/images/mode-native-pptx.png) | ![HTML deck mode preview](docs/images/mode-html-deck.png) | ![Image-first PPTX mode preview](docs/images/mode-image-first.png) |
+| Editable PowerPoint work for real teams, client handoffs, charts, tables, and speaker notes. | Browser-native decks with keyboard navigation, print CSS, fast iteration, and visual QA. | High-impact visual decks for social carousels, campaigns, and keynote-style moments. |
 
 ## Compatibility
 
@@ -194,6 +203,8 @@ The checks validate:
 knowledge-cat-ppt-skill/
 +-- SKILL.md
 +-- README.md
++-- README_CN.md
++-- README_BILINGUAL.md
 +-- VERSION
 +-- CHANGELOG.md
 +-- CONTRIBUTING.md
@@ -231,8 +242,9 @@ knowledge-cat-ppt-skill/
 |   +-- validate_deck_plan.py
 |   +-- validate_html_deck.py
 +-- docs/
-    +-- PUBLISHING.md
-    +-- ROADMAP.md
+|   +-- PUBLISHING.md
+|   +-- ROADMAP.md
+|   +-- images/
 ```
 
 ## How The Skill Works
@@ -288,7 +300,6 @@ See `docs/ROADMAP.md`.
 
 Near-term goals:
 
-- public screenshots for the sample HTML deck
 - editable PPTX case study
 - HTML keynote case study
 - image-first carousel case study
