@@ -1,0 +1,94 @@
+{
+  "deck": {
+    "title": "Knowledge Cat PPT Operating System",
+    "audience": "AI creators and operators who need repeatable presentation workflows",
+    "outcome": "Adopt a story-first slide workflow instead of asking for pretty slides first",
+    "main_promise": "A deck becomes reliable when story, engine, design, and QA are treated as one system",
+    "narrative_spine": "Problem -> failed old approach -> new mechanism -> proof -> next step",
+    "output_lane": "native-pptx",
+    "format": "16:9 PowerPoint",
+    "slide_count": 5,
+    "design_posture": "Strategic Minimal",
+    "assumptions": [
+      "The user needs an editable professional deck",
+      "The deck is a short internal explanation, not a public keynote"
+    ]
+  },
+  "slides": [
+    {
+      "number": 1,
+      "action_title": "Most AI decks fail because they start with style instead of audience shift",
+      "role": "Hook",
+      "key_message": "The root problem is not decoration, but unclear outcome and story.",
+      "evidence": [
+        "Observed failure pattern from presentation skill benchmarks"
+      ],
+      "visual": "Split comparison: prompt-first slide pile versus brief-first deck system",
+      "speaker_note": "Open with the common failure mode and name the alternative.",
+      "source_refs": [
+        "references/benchmark-synthesis.md"
+      ],
+      "asset_needs": []
+    },
+    {
+      "number": 2,
+      "action_title": "A production deck needs four decisions before slide generation starts",
+      "role": "Mechanism",
+      "key_message": "Audience, story, output lane, and QA level determine every downstream choice.",
+      "evidence": [
+        "Knowledge Cat workflow"
+      ],
+      "visual": "Four-part operating model diagram",
+      "speaker_note": "Show that this is a controllable process, not taste magic.",
+      "source_refs": [
+        "SKILL.md"
+      ],
+      "asset_needs": []
+    },
+    {
+      "number": 3,
+      "action_title": "Native PPTX, HTML, and image-first decks solve different jobs",
+      "role": "Comparison",
+      "key_message": "Choosing the wrong output lane creates avoidable downstream failure.",
+      "evidence": [
+        "Engine routing matrix"
+      ],
+      "visual": "Three-column decision matrix",
+      "speaker_note": "Make the tradeoffs explicit so users can choose intentionally.",
+      "source_refs": [
+        "references/engine-routing.md"
+      ],
+      "asset_needs": []
+    },
+    {
+      "number": 4,
+      "action_title": "Action titles turn a slide deck into a readable argument",
+      "role": "Proof",
+      "key_message": "The ghost deck test exposes weak story structure before design work begins.",
+      "evidence": [
+        "Action title and ghost deck standards"
+      ],
+      "visual": "Before/after title sequence",
+      "speaker_note": "Contrast topic labels with complete-sentence claims.",
+      "source_refs": [
+        "references/story-architecture.md"
+      ],
+      "asset_needs": []
+    },
+    {
+      "number": 5,
+      "action_title": "Rendered QA is what turns a good plan into a shippable deck",
+      "role": "Closing",
+      "key_message": "The final quality gate must inspect real output, not just the plan or code.",
+      "evidence": [
+        "QA rubric"
+      ],
+      "visual": "Checklist with content, visual, story, and format QA gates",
+      "speaker_note": "Close by making QA part of the workflow, not an afterthought.",
+      "source_refs": [
+        "references/qa-rubric.md"
+      ],
+      "asset_needs": []
+    }
+  ]
+}

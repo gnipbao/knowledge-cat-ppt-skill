@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest a new workflow, output lane, validator, recipe, or example.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What real presentation workflow does this unlock or improve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should be added or changed?
+    validations:
+      required: true
+  - type: dropdown
+    id: lane
+    attributes:
+      label: Primary output lane
+      options:
+        - native-pptx
+        - html-deck
+        - image-first-pptx
+        - review-only
+        - cross-lane
+        - packaging/docs
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Suggested validation
+      description: What test, example, or retest prompt would prove this works?
+

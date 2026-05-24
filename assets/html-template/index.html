@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{DECK_TITLE}}</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --ink: #141414;
+      --muted: #5f625f;
+      --line: #d9d2c5;
+      --accent: #0057ff;
+      --accent-2: #ffb703;
+      --panel: #ffffff;
+      --shadow: 0 24px 80px rgba(20, 20, 20, 0.10);
+      --safe-x: clamp(40px, 6vw, 92px);
+      --safe-y: clamp(32px, 5vh, 64px);
+      --radius: 8px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      overflow: hidden;
+    }
+
+    body.theme-dark {
+      --bg: #101214;
+      --ink: #f7f4ef;
+      --muted: #b8b5ad;
+      --line: #31363a;
+      --panel: #171a1d;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      inset: 0;
+      padding: var(--safe-y) var(--safe-x);
+      display: grid;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(5vw);
+      transition: opacity 260ms ease, transform 360ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .slide.exit-left { transform: translateX(-5vw); }
+
+    .kicker {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 18px;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin: 0; }
+
+    .hero-title {
+      font-size: clamp(56px, 8vw, 132px);
+      line-height: 0.92;
+      font-weight: 720;
+      max-width: 14ch;
+      letter-spacing: 0;
+    }
+
+    .action-title {
+      font-size: clamp(36px, 4.8vw, 78px);
+      line-height: 0.98;
+      font-weight: 680;
+      max-width: 16ch;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      font-size: clamp(20px, 2vw, 30px);
+      line-height: 1.28;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    .body {
+      font-size: clamp(17px, 1.25vw, 22px);
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .meta {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero {
+      align-content: end;
+      gap: 28px;
+    }
+
+    .statement {
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.55fr);
+      align-items: end;
+      gap: clamp(36px, 6vw, 96px);
+    }
+
+    .two-col {
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(36px, 5vw, 84px);
+    }
+
+    .evidence {
+      grid-template-rows: auto 1fr;
+      gap: 36px;
+    }
+
+    .exhibit {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 3vw, 44px);
+      display: grid;
+      gap: 22px;
+      align-content: center;
+      min-height: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 180px;
+      background: color-mix(in srgb, var(--panel) 82%, transparent);
+      display: grid;
+      align-content: space-between;
+      gap: 20px;
+    }
+
+    .card strong {
+      font-size: clamp(22px, 2vw, 32px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .big-number {
+      font-size: clamp(76px, 13vw, 190px);
+      line-height: 0.84;
+      font-weight: 780;
+      letter-spacing: 0;
+      color: var(--accent);
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .bar-track {
+      height: 16px;
+      background: color-mix(in srgb, var(--line) 70%, transparent);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      display: block;
+      height: 100%;
+      width: var(--value, 50%);
+      background: var(--accent);
+    }
+
+    .image-slot {
+      min-height: 360px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 48%),
+        color-mix(in srgb, var(--panel) 76%, transparent);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .image-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-slot .placeholder {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .quote {
+      font-size: clamp(38px, 5vw, 86px);
+      line-height: 1.0;
+      font-weight: 680;
+      max-width: 14ch;
+    }
+
+    .footnote {
+      position: absolute;
+      left: var(--safe-x);
+      right: var(--safe-x);
+      bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .nav {
+      position: fixed;
+      right: 22px;
+      bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      z-index: 10;
+    }
+
+    .progress {
+      width: 120px;
+      height: 3px;
+      background: color-mix(in srgb, var(--line) 74%, transparent);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 220ms ease;
+    }
+
+    @media (max-width: 760px) {
+      html,
+      body { overflow: auto; }
+
+      .deck {
+        height: auto;
+        overflow: visible;
+      }
+
+      .slide {
+        position: relative;
+        min-height: 100vh;
+        height: auto;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        display: grid;
+      }
+
+      .statement,
+      .two-col,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav { display: none; }
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+        overflow: visible;
+      }
+
+      .deck {
+        height: auto;
+        overflow: visible;
+      }
+
+      .slide {
+        position: relative;
+        page-break-after: always;
+        opacity: 1;
+        transform: none;
+      }
+
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" data-title="{{DECK_TITLE}}">
+    <!-- SLIDES_HERE -->
+  </main>
+  <div class="nav" aria-hidden="true">
+    <span id="counter">1 / 1</span>
+    <div class="progress"><span id="progress"></span></div>
+    <span>Prev / Next</span>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress");
+    let index = 0;
+
+    function syncTheme(slide) {
+      document.body.classList.toggle("theme-dark", slide.dataset.theme === "dark");
+    }
+
+    function show(next) {
+      if (!slides.length) return;
+      const previous = index;
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.classList.toggle("exit-left", i < index);
+      });
+      syncTheme(slides[index]);
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      if (previous !== index) {
+        history.replaceState(null, "", `#${index + 1}`);
+      }
+    }
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " " || event.key === "PageDown") show(index + 1);
+      if (event.key === "ArrowLeft" || event.key === "PageUp") show(index - 1);
+      if (event.key === "Home") show(0);
+      if (event.key === "End") show(slides.length - 1);
+    });
+
+    window.addEventListener("hashchange", () => {
+      const value = Number(location.hash.replace("#", ""));
+      if (Number.isFinite(value) && value > 0) show(value - 1);
+    });
+
+    const initial = Number(location.hash.replace("#", ""));
+    show(Number.isFinite(initial) && initial > 0 ? initial - 1 : 0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Cat PPT"
+  short_description: "Story-first PPT, slides, templates, and QA"
+  default_prompt: "Use $knowledge-cat-ppt-skill to turn my source material into a client-ready slide deck."

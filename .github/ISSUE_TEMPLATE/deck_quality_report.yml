@@ -1,0 +1,30 @@
+name: Deck quality report
+description: Report a weak generated deck so the skill can evolve.
+title: "[Deck Quality]: "
+labels: ["quality", "feedback"]
+body:
+  - type: textarea
+    id: brief
+    attributes:
+      label: Deck brief
+      description: Audience, outcome, source material, output lane, and page count.
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: What felt weak?
+      description: Story, slide clarity, evidence, visual quality, format, or QA.
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Include screenshots, slide titles, or validation output when possible.
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired behavior
+      description: What should the skill have done instead?
+

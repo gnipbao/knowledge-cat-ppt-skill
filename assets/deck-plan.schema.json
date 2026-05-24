@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Knowledge Cat Deck Plan",
+  "type": "object",
+  "required": ["deck", "slides"],
+  "properties": {
+    "deck": {
+      "type": "object",
+      "required": [
+        "title",
+        "audience",
+        "outcome",
+        "output_lane",
+        "format",
+        "slide_count"
+      ],
+      "properties": {
+        "title": { "type": "string" },
+        "audience": { "type": "string" },
+        "outcome": { "type": "string" },
+        "main_promise": { "type": "string" },
+        "narrative_spine": { "type": "string" },
+        "output_lane": {
+          "type": "string",
+          "enum": ["native-pptx", "html-deck", "image-first-pptx", "review-only"]
+        },
+        "format": { "type": "string" },
+        "slide_count": { "type": "integer", "minimum": 1 },
+        "design_posture": { "type": "string" },
+        "assumptions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "number",
+          "action_title",
+          "role",
+          "key_message",
+          "visual"
+        ],
+        "properties": {
+          "number": { "type": "integer", "minimum": 1 },
+          "action_title": { "type": "string" },
+          "role": { "type": "string" },
+          "key_message": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "visual": { "type": "string" },
+          "speaker_note": { "type": "string" },
+          "source_refs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "asset_needs": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

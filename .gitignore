@@ -1,0 +1,31 @@
+.DS_Store
+Thumbs.db
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+.env
+.env.*
+!.env.example
+
+node_modules/
+dist/
+build/
+coverage/
+
+*.log
+*.tmp
+*.bak
+
+examples/.tmp-*/
+examples/**/.tmp-*/
+
+# Generated presentation outputs should live outside the skill repo unless
+# they are intentional examples.
+output/
+exports/
+generated/
+
