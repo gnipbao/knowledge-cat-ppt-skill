@@ -27,6 +27,34 @@
         "format": { "type": "string" },
         "slide_count": { "type": "integer", "minimum": 1 },
         "design_posture": { "type": "string" },
+        "style_prompt_source": { "type": "string" },
+        "style_prompt_profile": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "selected_prompt": { "type": "string" },
+            "visual_dna": { "type": "string" },
+            "palette": { "type": "string" },
+            "typography": { "type": "string" },
+            "texture_material": { "type": "string" },
+            "composition": { "type": "string" },
+            "text_in_image_policy": { "type": "string" },
+            "must_preserve": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "must_avoid": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "safety_normalization": { "type": "string" }
+          }
+        },
+        "image_generation_strategy": {
+          "type": "string",
+          "enum": ["none", "full-image-first", "hybrid-image-first", "image-first-html-prototype", "social-carousel"]
+        },
+        "prompt_log_path": { "type": "string" },
         "assumptions": {
           "type": "array",
           "items": { "type": "string" }
@@ -47,6 +75,7 @@
         ],
         "properties": {
           "number": { "type": "integer", "minimum": 1 },
+          "layout": { "type": "string" },
           "action_title": { "type": "string" },
           "role": { "type": "string" },
           "key_message": { "type": "string" },
@@ -55,6 +84,12 @@
             "items": { "type": "string" }
           },
           "visual": { "type": "string" },
+          "visual_intent": { "type": "string" },
+          "style_variation": { "type": "string" },
+          "text_inside_image": { "type": "string" },
+          "aspect_ratio": { "type": "string" },
+          "prompt_seed": { "type": "string" },
+          "prompt_risk": { "type": "string" },
           "speaker_note": { "type": "string" },
           "source_refs": {
             "type": "array",

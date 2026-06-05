@@ -12,13 +12,14 @@ Use this file when improving the skill, explaining its architecture, or comparin
 - Academic PPTX Skill: https://github.com/Gabberflast/academic-pptx-skill
 - Claude Office Skills presentation patterns: https://github.com/claude-office-skills/skills
 
-Last benchmark refresh: 2026-05-24.
+Last benchmark refresh: 2026-06-04.
 
 Current market signals:
 
 - PPT Master is the strongest native-editable PPTX benchmark: document-to-PPTX, real PowerPoint shapes, template replication, animation, narration/video, live preview, public examples, and release packaging.
-- Guizang PPT Skill is the strongest HTML-deck skill benchmark: single-file horizontal deck, opinionated aesthetics, reusable templates, layout locks, checklist discipline, and static validation.
+- Guizang PPT Skill is the strongest HTML-deck skill benchmark: single-file horizontal deck, opinionated aesthetics, reusable templates, layout locks, checklist discipline, image slot rules, screenshot handling, and static validation.
 - gpt-image2-ppt-skills is a strong image-first benchmark: bundled visual styles, template clone mode, prompt-backed image generation, HTML viewer, PPTX packaging, and installer scripts.
+- User-uploaded prompt libraries are a strong image-first signal: the portable mechanism is style DNA extraction, prompt normalization, slide-level prompt planning, and editability-aware routing.
 
 ## What The Strongest Skills Have In Common
 
@@ -47,11 +48,23 @@ Guizang and Frontend Slides show why HTML decks are strong for agent workflows: 
 
 Knowledge Cat rule: HTML is a first-class lane, not a fallback, but it must be chosen intentionally.
 
+### HTML Needs A Production Lock
+
+Guizang's strongest transferable mechanism is not a visual style; it is a lock system. A browser deck becomes stable when the agent must choose a style package, copy from a known template, declare a layout on every slide, plan theme rhythm, bind local images to named slots and target ratios, run static validation, and visually inspect the rendered deck.
+
+Knowledge Cat rule: production HTML decks load `references/html-production-lock.md` before `references/html-deck-recipes.md`. Every final slide declares `data-layout`, `data-title`, `data-role`, and `data-theme`; local images declare `data-image-slot` and target ratio metadata; static validation errors block delivery.
+
 ### Image-First Decks Are A Separate Product
 
 gpt-image2-ppt-skills shows the value of image-first generation for dramatic visual style, template mimicry, and social sharing. The tradeoff is that slide content often becomes less editable.
 
 Knowledge Cat rule: image-first decks are for visual impact, not routine business collaboration.
+
+### Uploaded Style Prompts Should Drive Image-First Routing
+
+Prompt tables and theme/style prompt libraries are not just inspiration lists. When a user uploads them and asks to use that visual language, they are providing art direction for generated slide surfaces.
+
+Knowledge Cat rule: parse uploaded style prompts with `references/style-prompt-intake.md`, extract a Style Prompt Profile, and prefer `image-first-pptx` or hybrid image-first PPTX unless editability, charts, citations, or collaboration override the visual-first goal.
 
 ### Template Replication Needs Structure
 
@@ -81,7 +94,9 @@ Knowledge Cat PPT should be a methodology toolbox:
 - `design-systems.md`: visual system and layout rules.
 - `native-pptx-recipes.md`: editable PowerPoint production contract.
 - `html-deck-recipes.md`: browser deck starter and layout recipes.
+- `html-production-lock.md`: HTML layout registration, theme rhythm, local image slot contract, screenshot handling, and validation rules.
 - `image-first-recipes.md`: visual deck prompt plan and editability contract.
+- `style-prompt-intake.md`: user-uploaded theme/style prompt parsing, Style Prompt Profile, prompt normalization, and image-first routing.
 - `template-replication.md`: template extraction and reuse.
 - `qa-rubric.md`: final verification loop.
 - `validate_deck_plan.py`: deterministic guardrail for JSON plans.

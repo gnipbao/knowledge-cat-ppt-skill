@@ -22,18 +22,27 @@ python3 scripts/init_deck_project.py path/to/project --title "Deck Title"
 
 Then replace `<!-- SLIDES_HERE -->` with real slide sections.
 
+Before final slide writing, read `references/html-production-lock.md` and choose:
+
+- style package
+- layout registry
+- theme rhythm
+- image slot plan
+- validation level
+
 ## Required Section Contract
 
 Every slide must be a `<section>` with:
 
 ```html
-<section class="slide layout-name" data-title="Action title" data-role="Hook" data-theme="light">
+<section class="slide layout-name" data-layout="layout-name" data-title="Action title" data-role="Hook" data-theme="light">
   ...
 </section>
 ```
 
 Required attributes:
 
+- `data-layout`: the registered layout name, such as `hero`, `statement`, `two-col`, `evidence`, `image-annotation`, or `custom-diagram`.
 - `data-title`: the action title of the slide.
 - `data-role`: the story role, such as Hook, Context, Proof, Mechanism, Comparison, Decision, or Closing.
 - `data-theme`: `light` or `dark`.
@@ -45,6 +54,37 @@ Rules:
 - Keep one primary visual job per slide.
 - Use `source refs` in speaker notes or visible footnotes when claims matter.
 - Keep bottom navigation clear; do not place important content below 92vh.
+- Do not use layout classes from another template unless their CSS is defined in the active deck stylesheet.
+- For local images, use `src="images/..."`, meaningful `alt`, `data-image-slot`, and `data-slot-ratio`.
+
+## Layout Registry
+
+Built-in layout names:
+
+| Layout | Use |
+|---|---|
+| `hero` | cover, section opener, major pivot |
+| `statement` | sharp insight, reset, quote-like claim |
+| `two-col` | before/after, problem/solution, two-sided argument |
+| `evidence` | data, research, chart, exhibit |
+| `image-annotation` | screenshot, product surface, generated visual plus explanation |
+| `closing-decision` | next step, decision, call to action |
+| `comparison` | multi-column contrast or tradeoff |
+| `timeline` | sequence, rollout, history |
+| `process` | workflow, mechanism, ladder |
+| `system-map` | architecture, causal map, relationship graph |
+| `data-dashboard` | several related metrics or charts |
+| `quote` | memorable line plus implication |
+
+Use `custom-*` only when a registered layout cannot do the job. Custom layouts must define their CSS in the deck stylesheet and explain the rationale in the deck plan.
+
+## Theme Rhythm
+
+Plan the theme sequence before writing final slide markup.
+
+- Avoid three consecutive slides with the same `data-theme` in decks of five or more slides.
+- Decks of eight or more slides should include at least two light slides and at least two dark slides.
+- Use dark slides for resets, pivots, strong claims, or closing moments rather than mechanical alternation.
 
 ## Layout Recipes
 
@@ -53,7 +93,7 @@ Rules:
 Use for covers, section openers, or major pivots.
 
 ```html
-<section class="slide hero" data-title="The title states the deck's promise" data-role="Hook" data-theme="light">
+<section class="slide hero" data-layout="hero" data-title="The title states the deck's promise" data-role="Hook" data-theme="light">
   <div>
     <p class="kicker">Knowledge Cat PPT</p>
     <h1 class="hero-title">The title states the deck's promise</h1>
@@ -68,7 +108,7 @@ Use for covers, section openers, or major pivots.
 Use for a sharp insight with a short supporting note.
 
 ```html
-<section class="slide statement" data-title="One claim changes how the audience reads the rest" data-role="Insight" data-theme="dark">
+<section class="slide statement" data-layout="statement" data-title="One claim changes how the audience reads the rest" data-role="Insight" data-theme="dark">
   <div>
     <p class="kicker">Insight</p>
     <h2 class="action-title">One claim changes how the audience reads the rest</h2>
@@ -82,7 +122,7 @@ Use for a sharp insight with a short supporting note.
 Use for before/after, old/new, or problem/solution.
 
 ```html
-<section class="slide two-col" data-title="The old workflow loses trust before the demo" data-role="Comparison" data-theme="light">
+<section class="slide two-col" data-layout="two-col" data-title="The old workflow loses trust before the demo" data-role="Comparison" data-theme="light">
   <div>
     <p class="kicker">Before / After</p>
     <h2 class="action-title">The old workflow loses trust before the demo</h2>
@@ -100,7 +140,7 @@ Use for before/after, old/new, or problem/solution.
 Use for data, research, screenshots, or an annotated diagram.
 
 ```html
-<section class="slide evidence" data-title="Three signals show the category is ready" data-role="Proof" data-theme="light">
+<section class="slide evidence" data-layout="evidence" data-title="Three signals show the category is ready" data-role="Proof" data-theme="light">
   <div>
     <p class="kicker">Evidence</p>
     <h2 class="action-title">Three signals show the category is ready</h2>
@@ -121,9 +161,9 @@ Use for data, research, screenshots, or an annotated diagram.
 Use when a screenshot, product surface, or generated visual is the main evidence.
 
 ```html
-<section class="slide two-col" data-title="The product surface proves the workflow is inspectable" data-role="Case" data-theme="light">
+<section class="slide two-col" data-layout="image-annotation" data-title="The product surface proves the workflow is inspectable" data-role="Case" data-theme="light">
   <div class="image-slot">
-    <span class="placeholder">Replace with images/04-product.png</span>
+    <img src="images/04-product-surface.png" alt="Product workflow surface" data-image-slot="04-main-16x10" data-slot-ratio="16:10">
   </div>
   <div>
     <p class="kicker">Case</p>
@@ -138,7 +178,7 @@ Use when a screenshot, product surface, or generated visual is the main evidence
 Use for a clear next step.
 
 ```html
-<section class="slide statement" data-title="The next move is to test one deck through the full QA loop" data-role="Decision" data-theme="dark">
+<section class="slide statement" data-layout="closing-decision" data-title="The next move is to test one deck through the full QA loop" data-role="Decision" data-theme="dark">
   <div>
     <p class="kicker">Decision</p>
     <h2 class="action-title">The next move is to test one deck through the full QA loop</h2>
@@ -159,8 +199,10 @@ Minimum pass:
 
 - No unreplaced template markers.
 - At least one slide exists.
-- Every slide has `data-title` and `data-role`.
+- Every slide has `data-layout`, `data-title`, `data-role`, and valid `data-theme`.
 - No weak placeholder text.
 - Slide count matches `deck-plan.json` when a plan is provided.
+- Local images declare slot and ratio metadata.
+- Theme rhythm warnings are reviewed.
 
 For production delivery, static validation is not enough. Open the HTML deck in a browser and visually inspect representative slides.

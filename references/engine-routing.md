@@ -9,6 +9,7 @@ Use this file before choosing the production lane for a nontrivial deck.
 | Client-ready PowerPoint, board deck, finance, legal, sales, training, academic, internal collaboration | Native editable PPTX | PowerPoint users can edit text, charts, shapes, notes, and templates | Harder to reach extreme visual fidelity without careful QA |
 | Web presentation, interactive story, animation-heavy keynote, design prototype, single-file sharing | HTML deck | Easy for agents to edit, preview, animate, and test in a browser | Not a true PowerPoint file unless exported as static images/PDF |
 | Visual campaign, dramatic keynote, social carousel, cover-heavy deck, template-mimic visual study | Image-first PPTX | Highest visual style ceiling and fast image iteration | Slides may be flattened images and less editable |
+| User-uploaded theme/style prompt, AI image prompt table, visual DNA block, Image2/GPT-Image style request | Image-first PPTX or hybrid image-first PPTX | The user is giving art direction for generated slide surfaces | Exact text, charts, and later edits may need editable overlays or native slides |
 | Existing deck critique or rescue | Review-only first | Prevents premature rewriting and surfaces root defects | User may still need a second repair pass |
 
 ## Default Routing Rules
@@ -32,7 +33,13 @@ Choose image-first PPTX when:
 - The user explicitly prioritizes visual impact over editability.
 - The output is a visual talk, launch deck, social carousel, or art-directed narrative.
 - The user asks to use AI image generation for most slide surfaces.
+- The user uploads or pastes a theme/style prompt, prompt table, style DNA block, or says to use Image2/GPT-Image as the primary PPT visual engine.
 - Template mimicry is primarily about visual feel rather than editable structures.
+
+Choose hybrid image-first PPTX when:
+
+- The uploaded style prompt should drive covers, section openers, summaries, or social cards, but evidence slides need editable text, charts, tables, citations, or product screenshots.
+- The user wants the uploaded style but will still revise the deck with teammates.
 
 Choose review-only when:
 
@@ -90,7 +97,7 @@ Required checks:
 
 Use when web-native quality matters.
 
-Before building, read `references/html-deck-recipes.md`.
+Before building, read `references/html-production-lock.md`, then `references/html-deck-recipes.md`.
 
 Recommended properties:
 
@@ -100,6 +107,8 @@ Recommended properties:
 - Stable dimensions for fixed UI elements.
 - Clear print/PDF export route if needed.
 - Local assets with predictable paths.
+- Registered slide layouts through `data-layout`.
+- Image slots with target ratios for local assets.
 
 Bundled starter path:
 
@@ -119,11 +128,12 @@ Required checks:
 
 Use when art direction is more important than editability.
 
-Before building, read `references/image-first-recipes.md`.
+Before building, read `references/style-prompt-intake.md` if the user provided a style prompt, then `references/image-first-recipes.md`.
 
 Recommended properties:
 
 - Markdown plan first.
+- Style Prompt Profile when user art direction exists.
 - Prompt log for each slide.
 - One-slide smoke test before full generation.
 - Consistent image aspect ratio and safe areas.
@@ -132,6 +142,7 @@ Recommended properties:
 Required checks:
 
 - User understands editability limits.
+- Uploaded style prompt was parsed and normalized.
 - Images match slide slots and language.
 - No AI-generated footer, page number, title bar, or unwanted text inside images unless intended.
 - Prompt log is saved for iteration.

@@ -99,3 +99,32 @@ Expected behavior:
 - Refuse to declare final without rendered visual QA.
 - Run or request the necessary checks.
 - Report remaining risks.
+
+## 9. HTML Production Lock
+
+```md
+Use $knowledge-cat-ppt-skill. Build a 7-slide HTML deck from this product strategy memo. Include one local product screenshot slot, use at least five layout types, and run the HTML validator before delivery.
+```
+
+Expected behavior:
+
+- Select `html-deck` only if browser delivery fits the user need.
+- Read `references/html-production-lock.md` before `references/html-deck-recipes.md`.
+- Declare `data-layout`, `data-title`, `data-role`, and `data-theme` on every slide.
+- Give local images `data-image-slot`, target ratio metadata, and meaningful alt text.
+- Report validator output and any visual QA that was or was not performed.
+
+## 10. Uploaded Style Prompt Image-First
+
+```md
+Use $knowledge-cat-ppt-skill. I uploaded a table of PPT theme/style prompts. Pick the best style for a 9-slide AI product launch deck and prioritize Image2/GPT-Image style generation unless you think editability should override it.
+```
+
+Expected behavior:
+
+- Detect the uploaded prompt table as a style prompt source.
+- Read `references/style-prompt-intake.md` before `references/image-first-recipes.md`.
+- Prefer `image-first-pptx` or hybrid image-first PPTX, then state the editability tradeoff.
+- Extract a Style Prompt Profile instead of blindly pasting the raw prompt.
+- Produce a slide-level prompt plan with visual intent, style variation, text-in-image policy, aspect ratio, and prompt risk.
+- Preserve exact product claims, metrics, screenshots, and citations outside images when they must remain editable or verifiable.

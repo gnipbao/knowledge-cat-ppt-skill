@@ -8,7 +8,7 @@ Story-first presentation production for AI agents.
 Knowledge Cat PPT is an open-source Agent Skill for creating, reviewing, and repairing presentation decks. It is designed for Codex, Claude Code, and other skill-aware coding agents.  
 知识猫 PPT 是一个开源 Agent Skill，用来创建、审阅和修复高质量演示文稿，兼容 Codex、Claude Code 和其他能读取 `SKILL.md` 的 Agent。
 
-Current version / 当前版本：`0.4.0`
+Current version / 当前版本：`0.6.0`
 
 ## Highlights / 亮点
 

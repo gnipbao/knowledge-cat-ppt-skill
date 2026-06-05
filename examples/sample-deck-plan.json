@@ -17,6 +17,7 @@
   "slides": [
     {
       "number": 1,
+      "layout": "two-col",
       "action_title": "Most AI decks fail because they start with style instead of audience shift",
       "role": "Hook",
       "key_message": "The root problem is not decoration, but unclear outcome and story.",
@@ -32,6 +33,7 @@
     },
     {
       "number": 2,
+      "layout": "system-map",
       "action_title": "A production deck needs four decisions before slide generation starts",
       "role": "Mechanism",
       "key_message": "Audience, story, output lane, and QA level determine every downstream choice.",
@@ -47,6 +49,7 @@
     },
     {
       "number": 3,
+      "layout": "comparison",
       "action_title": "Native PPTX, HTML, and image-first decks solve different jobs",
       "role": "Comparison",
       "key_message": "Choosing the wrong output lane creates avoidable downstream failure.",
@@ -62,6 +65,7 @@
     },
     {
       "number": 4,
+      "layout": "comparison",
       "action_title": "Action titles turn a slide deck into a readable argument",
       "role": "Proof",
       "key_message": "The ghost deck test exposes weak story structure before design work begins.",
@@ -77,6 +81,7 @@
     },
     {
       "number": 5,
+      "layout": "closing-decision",
       "action_title": "Rendered QA is what turns a good plan into a shippable deck",
       "role": "Closing",
       "key_message": "The final quality gate must inspect real output, not just the plan or code.",

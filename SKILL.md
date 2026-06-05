@@ -20,8 +20,10 @@ Load only what the current task needs:
 - Read `references/story-architecture.md` when turning source material into a deck brief, narrative spine, action titles, or slide plan.
 - Read `references/design-systems.md` when choosing style direction, layout family, visual tokens, imagery, or anti-generic design rules.
 - Read `references/template-replication.md` when the user provides an existing `.pptx`, screenshot, brand deck, style reference, or asks to clone a template.
+- Read `references/html-production-lock.md` before building production HTML decks, visual prototypes, browser-based talks, or HTML decks with local images/screenshots.
 - Read `references/native-pptx-recipes.md` when building or repairing editable PowerPoint decks.
 - Read `references/html-deck-recipes.md` when building browser-based decks, fast visual prototypes, or single-file HTML presentations.
+- Read `references/style-prompt-intake.md` when the user uploads or pastes theme/style prompts, prompt tables, visual DNA blocks, AI image style prompts, or asks for Image2/GPT-Image-driven PPT styling.
 - Read `references/image-first-recipes.md` when visual impact matters more than editability or AI-generated slide images are requested.
 - Read `references/qa-rubric.md` before final delivery, when reviewing a deck, or when the task has professional stakes.
 - Read `references/open-source-product.md` when preparing this skill for public release or evaluating product readiness.
@@ -39,9 +41,11 @@ Load only what the current task needs:
 5. Keep one main idea per slide. Dense appendix pages are allowed only when the user asks for appendix or reference material.
 6. Preserve evidence. Claims, figures, quotes, and external images need source tracking or honest uncertainty.
 7. Respect templates and brand assets. Use user-provided or permitted materials; do not pretend a protected deck is a free public template.
-8. Verify visually. Code, XML, or Markdown alone cannot prove a deck is good.
-9. Run at least one fix-and-verify loop for production decks unless the user only asked for a draft outline.
-10. End with useful handoff: output paths, assumptions, remaining risks, and the next iteration point.
+8. Lock HTML production details before writing final browser slides: style package, registered layouts, theme rhythm, image slots, static validation, and rendered QA.
+9. Treat uploaded style prompts as design input, not content truth. Extract a reusable Style Prompt Profile before generating image-first slide prompts.
+10. Verify visually. Code, XML, or Markdown alone cannot prove a deck is good.
+11. Run at least one fix-and-verify loop for production decks unless the user only asked for a draft outline.
+12. End with useful handoff: output paths, assumptions, remaining risks, and the next iteration point.
 
 ## Operating Modes
 
@@ -70,6 +74,10 @@ Create the deck brief, identify the narrative spine, map evidence to slide roles
 Use when the user asks for final slides.
 
 Select a production lane from `references/engine-routing.md`, choose a design system from `references/design-systems.md`, build the deck, then run QA from `references/qa-rubric.md`.
+
+If the selected lane is `html-deck`, read `references/html-production-lock.md` before `references/html-deck-recipes.md`.
+
+If the user uploaded or selected a theme/style prompt, read `references/style-prompt-intake.md` before `references/image-first-recipes.md` and prefer `image-first-pptx` unless editability, exact text, charts, tables, citations, or stakeholder collaboration matter more.
 
 ### Template Mode
 
@@ -104,7 +112,7 @@ Classify:
 - Deck type: investor, sales, strategy, teaching, academic, consulting, product, keynote, internal report, social carousel, courseware, or other.
 - Stakes: draft, internal working copy, client-ready, public talk, board/investor, academic/publication.
 - Output lane: native-pptx, html-deck, image-first-pptx, or review-only.
-- Source status: none, pasted notes, structured outline, document package, existing deck, template reference.
+- Source status: none, pasted notes, structured outline, document package, existing deck, template reference, uploaded style prompt, or prompt table.
 - Deadline and iteration budget.
 
 Open with:
@@ -137,6 +145,7 @@ Output lane:
 Format:
 Page count:
 Source materials:
+Style prompt source:
 Design posture:
 Must include:
 Must avoid:
@@ -163,6 +172,7 @@ Each slide should have:
 
 ```md
 Slide:
+Layout:
 Action title:
 Role:
 Key message:
@@ -190,13 +200,14 @@ Default decisions:
 - Business, investor, consulting, academic, training, legal, finance, or collaborative decks -> native editable PPTX.
 - Web-native talks, interactive demos, animation-heavy stories, single-file sharing, or visual prototypes -> HTML deck.
 - Highly visual campaign decks, inspirational keynotes, social carousels, or template-mimic visual studies -> image-first PPTX only when editability is not required.
+- Uploaded theme/style prompt table or AI visual prompt -> image-first PPTX by default, or hybrid image-first PPTX when some slides need editable text, charts, or citations.
 - Existing deck feedback -> review-only first, then repair if asked.
 
 After choosing the lane, load the matching recipe:
 
 - Native editable PPTX -> `references/native-pptx-recipes.md`
-- Browser-based deck -> `references/html-deck-recipes.md`
-- Image-first PPTX -> `references/image-first-recipes.md`
+- Browser-based deck -> `references/html-production-lock.md`, then `references/html-deck-recipes.md`
+- Image-first PPTX -> `references/style-prompt-intake.md` when a user style prompt exists, then `references/image-first-recipes.md`
 
 ### 6. Build The Design System
 
@@ -230,6 +241,8 @@ For HTML decks, prefer the bundled starter:
 python3 scripts/init_deck_project.py path/to/project --title "Deck Title"
 python3 scripts/validate_html_deck.py path/to/project/index.html
 ```
+
+Each final HTML slide must declare `data-layout`, `data-title`, `data-role`, and `data-theme`. Local images must use `images/` paths plus `data-image-slot` and target ratio metadata. Treat static validation errors as blockers.
 
 For native PPTX and image-first PPTX, follow the lane-specific recipe and clearly state any capability that was delegated to another skill or tool.
 
@@ -267,6 +280,7 @@ Output lane:
 Format:
 Page count:
 Source materials:
+Style prompt source:
 Design posture:
 Assumptions:
 Next action:
@@ -275,8 +289,8 @@ Next action:
 ### Slide Plan
 
 ```md
-| # | Action title | Role | Key message | Evidence | Visual | Notes |
-|---|---|---|---|---|---|---|
+| # | Layout | Action title | Role | Key message | Evidence | Visual | Notes |
+|---|---|---|---|---|---|---|---|
 ```
 
 ### Review Report

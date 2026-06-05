@@ -16,6 +16,7 @@
   "slides": [
     {
       "number": 1,
+      "layout": "hero",
       "action_title": "Story comes before slide styling",
       "role": "Hook",
       "key_message": "A production deck starts with audience, outcome, story, and output lane.",
@@ -31,6 +32,7 @@
     },
     {
       "number": 2,
+      "layout": "statement",
       "action_title": "The right output lane prevents expensive rework",
       "role": "Mechanism",
       "key_message": "Native PPTX, HTML, and image-first decks solve different problems.",
@@ -46,6 +48,7 @@
     },
     {
       "number": 3,
+      "layout": "closing-decision",
       "action_title": "Rendered QA turns a strong plan into a shippable deck",
       "role": "Closing",
       "key_message": "Final delivery requires story, visual, and format checks.",

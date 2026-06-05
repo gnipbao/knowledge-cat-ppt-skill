@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.6.0 - Uploaded Style Prompt Image-First
+
+- Added `references/style-prompt-intake.md` for user-uploaded theme/style prompts, prompt tables, visual DNA blocks, and Image2/GPT-Image-driven PPT styling.
+- Updated routing so uploaded visual style prompts prefer `image-first-pptx` or hybrid image-first PPTX unless editability, charts, citations, or collaboration should override it.
+- Expanded `references/image-first-recipes.md` with Style Prompt Profile, prompt-table handling, text-in-image policy, prompt structure, and representative-slide smoke testing.
+- Added deck-plan schema fields for style prompt source, style prompt profile, image generation strategy, prompt log path, and slide-level prompt metadata.
+- Added a retest prompt for uploaded style prompt image-first generation.
+
+## 0.5.0 - HTML Production Lock
+
+- Added `references/html-production-lock.md` for style package selection, layout registration, theme rhythm, local image slots, screenshot handling, static validation, and rendered QA.
+- Updated `SKILL.md`, engine routing, and HTML recipes to load the production lock before building final browser decks.
+- Strengthened `validate_html_deck.py` with `data-layout`, theme rhythm, local image slot, target ratio, alt text, and SVG text checks.
+- Updated the HTML deck initializer and sample deck to emit `data-layout` metadata.
+- Refreshed the Guizang PPT Skill benchmark synthesis with portable mechanisms rather than template imitation.
+
 ## 0.4.0 - Chinese Docs And Mode Previews
 
 - Added Chinese documentation in `README_CN.md`.

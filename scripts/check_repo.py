@@ -44,6 +44,8 @@ REQUIRED_FILES = [
     "references/story-architecture.md",
     "references/design-systems.md",
     "references/template-replication.md",
+    "references/html-production-lock.md",
+    "references/style-prompt-intake.md",
     "references/native-pptx-recipes.md",
     "references/html-deck-recipes.md",
     "references/image-first-recipes.md",

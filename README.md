@@ -6,7 +6,7 @@ Story-first presentation production for AI agents.
 
 Knowledge Cat PPT is an open-source Agent Skill for creating, reviewing, and repairing presentation decks. It is designed for Codex, Claude Code, and other skill-aware coding agents. Instead of acting like a generic "make pretty slides" prompt, it gives the agent a production system: clarify the audience shift, choose the right output lane, build a slide plan, generate the deck, and verify the result.
 
-Current version: `0.4.0`
+Current version: `0.6.0`
 
 ## Highlights
 
@@ -15,6 +15,8 @@ Current version: `0.4.0`
 - Evidence tracking for claims, quotes, data, assumptions, screenshots, and source materials.
 - HTML deck starter template with keyboard navigation, print CSS, light/dark themes, and no external dependencies.
 - JSON deck-plan validator and HTML deck validator.
+- HTML production lock for registered layouts, theme rhythm, image slots, screenshots, and rendered QA.
+- Uploaded theme/style prompt intake for Image2/GPT-Image-first PPT workflows.
 - Open-source repository hygiene checks, GitHub Actions workflow, issue templates, and release checklist.
 - Compatible with both Codex local skills and Claude Code style skills.
 
@@ -42,6 +44,7 @@ Knowledge Cat PPT helps an agent:
 - Turn rough ideas, notes, documents, transcripts, URLs, PDFs, or research into a deck brief.
 - Build a slide plan with action titles, slide roles, evidence, visuals, notes, and source references.
 - Choose the correct output lane before production.
+- Parse uploaded theme/style prompts into an image-first Style Prompt Profile.
 - Generate or guide production of HTML decks, editable PowerPoint decks, or image-first visual decks.
 - Review existing decks for story, evidence, visual system, editability, and technical risks.
 - Run validation before claiming a deck is ready.
@@ -228,11 +231,13 @@ knowledge-cat-ppt-skill/
 |   +-- design-systems.md
 |   +-- engine-routing.md
 |   +-- html-deck-recipes.md
+|   +-- html-production-lock.md
 |   +-- image-first-recipes.md
 |   +-- native-pptx-recipes.md
 |   +-- open-source-product.md
 |   +-- qa-rubric.md
 |   +-- story-architecture.md
+|   +-- style-prompt-intake.md
 |   +-- template-replication.md
 +-- scripts/
 |   +-- check_repo.py

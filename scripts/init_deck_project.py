@@ -12,7 +12,7 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = SKILL_ROOT / "assets" / "html-template" / "index.html"
 
 
-SAMPLE_SLIDES = """<section class="slide hero" data-title="Story comes before slide styling" data-role="Hook" data-theme="light">
+SAMPLE_SLIDES = """<section class="slide hero" data-layout="hero" data-title="Story comes before slide styling" data-role="Hook" data-theme="light">
   <div>
     <p class="kicker">Knowledge Cat PPT</p>
     <h1 class="hero-title">Story comes before slide styling</h1>
@@ -21,7 +21,7 @@ SAMPLE_SLIDES = """<section class="slide hero" data-title="Story comes before sl
   <div class="footnote"><span>Source: deck brief</span><span>01</span></div>
 </section>
 
-<section class="slide statement" data-title="The right output lane prevents expensive rework" data-role="Mechanism" data-theme="dark">
+<section class="slide statement" data-layout="statement" data-title="The right output lane prevents expensive rework" data-role="Mechanism" data-theme="dark">
   <div>
     <p class="kicker">Mechanism</p>
     <h2 class="action-title">The right output lane prevents expensive rework</h2>
@@ -29,7 +29,7 @@ SAMPLE_SLIDES = """<section class="slide hero" data-title="Story comes before sl
   <p class="lead">Native PPTX, HTML, and image-first decks solve different collaboration and fidelity problems.</p>
 </section>
 
-<section class="slide two-col" data-title="Rendered QA turns a strong plan into a shippable deck" data-role="Closing" data-theme="light">
+<section class="slide two-col" data-layout="closing-decision" data-title="Rendered QA turns a strong plan into a shippable deck" data-role="Closing" data-theme="light">
   <div>
     <p class="kicker">QA</p>
     <h2 class="action-title">Rendered QA turns a strong plan into a shippable deck</h2>
@@ -80,6 +80,7 @@ def main() -> int:
         "slides": [] if args.empty else [
             {
                 "number": 1,
+                "layout": "hero",
                 "action_title": "Story comes before slide styling",
                 "role": "Hook",
                 "key_message": "A production deck starts with audience, outcome, story, and output lane.",
@@ -91,6 +92,7 @@ def main() -> int:
             },
             {
                 "number": 2,
+                "layout": "statement",
                 "action_title": "The right output lane prevents expensive rework",
                 "role": "Mechanism",
                 "key_message": "Native PPTX, HTML, and image-first decks solve different problems.",
@@ -102,6 +104,7 @@ def main() -> int:
             },
             {
                 "number": 3,
+                "layout": "closing-decision",
                 "action_title": "Rendered QA turns a strong plan into a shippable deck",
                 "role": "Closing",
                 "key_message": "Final delivery requires story, visual, and format checks.",
