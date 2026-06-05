@@ -27,7 +27,7 @@ git push -u origin main
 
 ## Suggested Repository Description
 
-Story-first Agent Skill for creating, routing, and QA-checking PPT, HTML, and image-first presentation decks.
+Story-first Agent Skill for creating, routing, and QA-checking PPT, HTML, and image-first decks, with a 44-style template library and HTML signature packs.
 
 ## Suggested Topics
 
@@ -42,7 +42,19 @@ slides
 html-deck
 presentation-generator
 deck-qa
+template-library
+html-slides
+presentation-design
 ```
+
+## GitHub README Checklist
+
+- [ ] README states the current version.
+- [ ] README explains the three output lanes.
+- [ ] README links the 44-style template library.
+- [ ] README explains Portfolio Minimal as the first HTML signature pack.
+- [ ] README shows `python3 scripts/check_signature_pack.py portfolio-minimal`.
+- [ ] README names the evidence artifacts: deck plan, sample HTML, browser screenshots, contact sheet, QA report, and deterministic checks.
 
 ## Release Checklist
 

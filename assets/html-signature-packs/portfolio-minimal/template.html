@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{DECK_TITLE}}</title>
+  <style>
+    :root {
+      --bg: #f2f2f0;
+      --paper: #ffffff;
+      --ink: #050505;
+      --muted: #666660;
+      --line: #cfcfca;
+      --dark: #050505;
+      --dark-ink: #f7f7f3;
+      --safe-x: clamp(48px, 6vw, 92px);
+      --safe-y: clamp(34px, 5vh, 64px);
+      --font: Inter, Helvetica, Arial, sans-serif;
+      --mono: "SFMono-Regular", "Roboto Mono", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); overflow: hidden; }
+    body.theme-dark { --bg: var(--dark); --paper: #111; --ink: var(--dark-ink); --muted: #aaa69b; --line: #3b3b36; }
+    .deck { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      padding: var(--safe-y) var(--safe-x);
+      display: grid;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(4vw);
+      transition: opacity 220ms ease, transform 320ms ease;
+      background: var(--bg);
+    }
+    .slide.active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide.exit-left { transform: translateX(-4vw); }
+    .pm-nav { position: absolute; left: var(--safe-x); top: 28px; display: flex; gap: 18px; font: 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .pm-page { position: absolute; right: var(--safe-x); bottom: 24px; font: 12px/1 var(--mono); color: var(--muted); }
+    .pm-kicker { margin: 0 0 18px; font: 12px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .pm-title { margin: 0; font-size: clamp(46px, 6vw, 108px); line-height: 0.91; letter-spacing: 0; font-weight: 760; max-width: 13ch; }
+    .pm-headline { margin: 0; font-size: clamp(36px, 4.5vw, 74px); line-height: 0.96; letter-spacing: 0; font-weight: 720; max-width: 16ch; }
+    .pm-body { margin: 0; font-size: clamp(17px, 1.4vw, 23px); line-height: 1.42; color: var(--muted); max-width: 42ch; }
+    .pm-rule { height: 1px; background: var(--line); }
+    .pm-big { font-size: clamp(110px, 18vw, 260px); line-height: 0.78; font-weight: 790; letter-spacing: 0; }
+    .pm-label { font: 12px/1.2 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .pm-panel { border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 78%, transparent); padding: clamp(20px, 2.5vw, 36px); }
+    .pm-hero-index { align-content: end; gap: 28px; }
+    .pm-stamp-field { grid-template-columns: 1fr; align-content: center; }
+    .pm-stamps { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 42px; max-width: 780px; }
+    .pm-stamp { border: 1px solid var(--ink); padding: 10px 14px; font: 12px/1 var(--mono); text-transform: uppercase; transform: rotate(var(--r, 0deg)); }
+    .pm-number-split, .pm-photo-list, .pm-problem-solution { grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+    .pm-image-grid { grid-template-rows: auto 1fr; gap: 28px; }
+    .pm-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; grid-template-rows: 1fr 1fr; gap: 10px; min-height: 0; }
+    .pm-grid .pm-shot:first-child { grid-row: span 2; }
+    .pm-shot { border: 1px solid var(--line); overflow: hidden; background: var(--paper); min-height: 0; }
+    .pm-shot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.25); }
+    .pm-list { display: grid; gap: 20px; }
+    .pm-list-row { display: grid; grid-template-columns: 92px 1fr; gap: 22px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .pm-minimal-map { grid-template-columns: .6fr 1fr; gap: 60px; align-items: center; }
+    .pm-map-canvas { height: 420px; border: 1px solid var(--line); position: relative; background: var(--paper); }
+    .pm-pin { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+    .pm-pin::after { content: attr(data-label); position: absolute; left: 18px; top: -4px; white-space: nowrap; font: 12px/1 var(--mono); color: var(--muted); }
+    .pm-vertical-timeline { grid-template-columns: .48fr 1fr; gap: 70px; align-items: center; }
+    .pm-timeline { position: relative; display: grid; gap: 26px; padding-left: 34px; }
+    .pm-timeline::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); }
+    .pm-time { display: grid; grid-template-columns: 92px 1fr; gap: 24px; align-items: start; }
+    .pm-dark-network { background: var(--dark); color: var(--dark-ink); align-content: center; }
+    .pm-network { position: relative; height: 500px; border: 1px solid #31312d; }
+    .pm-node { position: absolute; width: 12px; height: 12px; border: 1px solid var(--dark-ink); border-radius: 50%; }
+    .pm-node::after { content: attr(data-label); position: absolute; left: 18px; top: -4px; font: 12px/1 var(--mono); color: #aaa69b; white-space: nowrap; }
+    .pm-line { position: absolute; height: 1px; background: #55554d; transform-origin: left center; }
+    .pm-three-steps { grid-template-rows: auto 1fr; gap: 48px; }
+    .pm-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .pm-step { border-left: 6px solid var(--ink); padding-left: 22px; display: grid; align-content: space-between; gap: 40px; }
+    .pm-logo-grid { grid-template-rows: auto 1fr; gap: 40px; }
+    .pm-logos { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
+    .pm-logo { min-height: 112px; display: grid; place-items: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 760; letter-spacing: 0.08em; }
+    .pm-equation { align-content: center; text-align: center; gap: 28px; }
+    .pm-eq { font-size: clamp(58px, 8vw, 132px); line-height: .92; font-weight: 760; letter-spacing: 0; }
+    .pm-arrow-process { grid-template-rows: auto 1fr; gap: 42px; }
+    .pm-arrows { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }
+    .pm-arrow { background: var(--ink); color: var(--bg); padding: 28px 32px; min-height: 160px; clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 50%, calc(100% - 34px) 100%, 0 100%, 26px 50%); display: grid; align-content: center; gap: 12px; }
+    .pm-closing-decision { align-content: center; justify-items: center; text-align: center; gap: 30px; }
+    .pm-nav-ui { position: fixed; right: 22px; bottom: 18px; display: flex; align-items: center; gap: 10px; color: var(--muted); font: 12px/1 var(--mono); z-index: 10; }
+    .pm-progress { width: 120px; height: 3px; background: color-mix(in srgb, var(--line) 74%, transparent); overflow: hidden; }
+    .pm-progress span { display: block; height: 100%; width: 0%; background: var(--ink); transition: width 220ms ease; }
+    body.theme-dark .pm-progress span { background: var(--dark-ink); }
+    @media (max-width: 760px) {
+      html, body { overflow: auto; }
+      .deck { height: auto; overflow: visible; }
+      .slide { position: relative; min-height: 100vh; height: auto; opacity: 1; transform: none; pointer-events: auto; }
+      .pm-number-split, .pm-photo-list, .pm-problem-solution, .pm-minimal-map, .pm-vertical-timeline, .pm-steps { grid-template-columns: 1fr; }
+      .pm-grid, .pm-logos, .pm-arrows { grid-template-columns: 1fr; }
+      .pm-nav-ui { display: none; }
+    }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { height: auto; overflow: visible; }
+      .slide { position: relative; page-break-after: always; opacity: 1; transform: none; }
+      .pm-nav-ui { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" data-title="{{DECK_TITLE}}" data-pack="kc-24-portfolio-minimal">
+    <!-- SLIDES_HERE -->
+  </main>
+  <div class="pm-nav-ui" aria-hidden="true">
+    <span id="counter">1 / 1</span>
+    <div class="pm-progress"><span id="progress"></span></div>
+    <span>Prev / Next</span>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress");
+    let index = 0;
+    function syncTheme(slide) {
+      document.body.classList.toggle("theme-dark", slide.dataset.theme === "dark");
+    }
+    function show(next) {
+      if (!slides.length) return;
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.classList.toggle("exit-left", i < index);
+      });
+      syncTheme(slides[index]);
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      history.replaceState(null, "", `#${index + 1}`);
+    }
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " " || event.key === "PageDown") show(index + 1);
+      if (event.key === "ArrowLeft" || event.key === "PageUp") show(index - 1);
+      if (event.key === "Home") show(0);
+      if (event.key === "End") show(slides.length - 1);
+    });
+    window.addEventListener("hashchange", () => {
+      const value = Number(location.hash.replace("#", ""));
+      if (Number.isFinite(value) && value > 0) show(value - 1);
+    });
+    const initial = Number(location.hash.replace("#", ""));
+    show(Number.isFinite(initial) && initial > 0 ? initial - 1 : 0);
+  </script>
+</body>
+</html>

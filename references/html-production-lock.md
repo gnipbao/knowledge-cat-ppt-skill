@@ -37,6 +37,7 @@ Every production HTML deck must have:
 - no unresolved `SLIDES_HERE`, `{{DECK_TITLE}}`, `TODO`, placeholder copy, or "replace with" text
 - one selected design posture from `references/design-systems.md`
 - a declared layout on every slide
+- one selected HTML visual system from `references/html-visual-systems.md` for benchmark-level decks
 - a theme rhythm plan
 - a static validation run
 - a rendered visual QA pass for final delivery
@@ -61,6 +62,8 @@ Rules:
 - If a custom visual direction is needed, name it and map it to the closest package.
 - Do not mix multiple visual languages in one deck unless the story explicitly needs a section break.
 - Do not accept arbitrary decoration as a style system. A style package must define typography, palette, layout families, image treatment, chart treatment, and density.
+
+For benchmark-level work, pick the closest concrete system from `references/html-visual-systems.md` and copy its tokens and forbidden moves into the deck brief before writing slide markup.
 
 ## Layout Registry
 
@@ -211,6 +214,28 @@ Static validation is not enough. For final HTML decks:
 
 Do not claim client-ready quality from code inspection alone.
 
+## Screenshot And Contact-Sheet Artifacts
+
+For benchmark-level HTML decks, rendered QA should leave evidence in the project folder:
+
+```txt
+screenshots/
++-- slide-01.png or slide-01.svg
++-- contact-sheet.png or contact-sheet.svg
+qa-report.md
+```
+
+Minimum artifact contract:
+
+- one representative slide screenshot
+- one contact sheet showing the full deck rhythm
+- a QA report with `Visual QA`, `Contact Sheet`, `Fix Loop`, and `Known Limitations`
+- a note when screenshots are fixture-level SVGs rather than browser-captured PNGs
+
+When a deterministic screenshot tool is not available, create fixture-level visual artifacts and say so in `qa-report.md`; do not pretend they are browser captures.
+
+Use `scripts/check_html_qa_artifacts.py path/to/case-study` to check that benchmark case studies include the required QA evidence.
+
 ## Failure Modes
 
 - HTML deck selected when the user needed editable PowerPoint.
@@ -233,4 +258,3 @@ Use $knowledge-cat-ppt-skill to create a 7-slide HTML deck from a product strate
 ```md
 Use $knowledge-cat-ppt-skill to review this HTML deck. Focus only on layout registration, theme rhythm, image slots, placeholder leakage, and whether the deck was visually QA'd.
 ```
-

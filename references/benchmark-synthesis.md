@@ -20,6 +20,7 @@ Current market signals:
 - Guizang PPT Skill is the strongest HTML-deck skill benchmark: single-file horizontal deck, opinionated aesthetics, reusable templates, layout locks, checklist discipline, image slot rules, screenshot handling, and static validation.
 - gpt-image2-ppt-skills is a strong image-first benchmark: bundled visual styles, template clone mode, prompt-backed image generation, HTML viewer, PPTX packaging, and installer scripts.
 - User-uploaded prompt libraries are a strong image-first signal: the portable mechanism is style DNA extraction, prompt normalization, slide-level prompt planning, and editability-aware routing.
+- User-provided 40+ style libraries are a template-depth signal: the portable mechanism is not copying long prompts, but turning style rows into a routed style-template library, signature HTML packs, image-first profiles, and retest prompts.
 
 ## What The Strongest Skills Have In Common
 
@@ -66,6 +67,12 @@ Prompt tables and theme/style prompt libraries are not just inspiration lists. W
 
 Knowledge Cat rule: parse uploaded style prompts with `references/style-prompt-intake.md`, extract a Style Prompt Profile, and prefer `image-first-pptx` or hybrid image-first PPTX unless editability, charts, citations, or collaboration override the visual-first goal.
 
+### Style Libraries Should Become Template Packs
+
+Large style dumps are valuable only when they become a decision system. A 40+ style list should be compressed into style seeds, default output lanes, protected-style normalization, and a small set of signature packs.
+
+Knowledge Cat rule: use `references/style-template-library.md` when the user asks for common PPT styles, style websites, or "surpass Guizang". Build the first benchmark HTML packs from `kc-24` Polished Minimal Portfolio, `kc-25` Minimal Data Story, `kc-28` Bold Editorial Magazine, `kc-26` Dark SaaS Product, and `kc-11` Architectural Blueprint.
+
 ### Template Replication Needs Structure
 
 The best template workflows extract a reusable profile: canvas, colors, typography, layout archetypes, image crops, spacing, and reusable assets. They do not merely "make it look like this."
@@ -97,6 +104,7 @@ Knowledge Cat PPT should be a methodology toolbox:
 - `html-production-lock.md`: HTML layout registration, theme rhythm, local image slot contract, screenshot handling, and validation rules.
 - `image-first-recipes.md`: visual deck prompt plan and editability contract.
 - `style-prompt-intake.md`: user-uploaded theme/style prompt parsing, Style Prompt Profile, prompt normalization, and image-first routing.
+- `style-template-library.md`: 44 style seeds, website radar, Guizang-surpass priority, and signature-pack contract.
 - `template-replication.md`: template extraction and reuse.
 - `qa-rubric.md`: final verification loop.
 - `validate_deck_plan.py`: deterministic guardrail for JSON plans.
@@ -113,3 +121,4 @@ Knowledge Cat PPT should be a methodology toolbox:
 - Template mimicry without permission or layout analysis.
 - A giant monolithic SKILL.md that loads everything for every request.
 - Quality claims based on code inspection instead of rendered slides.
+- A style library that remains a long prompt dump instead of becoming routed templates, examples, and validators.

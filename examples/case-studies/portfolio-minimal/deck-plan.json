@@ -1,0 +1,155 @@
+{
+  "deck": {
+    "title": "Portfolio Minimal Signature Pack",
+    "audience": "Agent skill maintainers comparing HTML deck production quality",
+    "outcome": "Show that Knowledge Cat can turn a style seed into a reusable HTML template pack with QA evidence.",
+    "main_promise": "A style seed becomes benchmark-grade only when it becomes layouts, artifacts, and checks.",
+    "narrative_spine": "Benchmark gap -> pack contract -> layout proof -> QA gate -> next pack sequence",
+    "output_lane": "html-deck",
+    "format": "single-folder HTML case study",
+    "slide_count": 12,
+    "design_posture": "kc-24 Polished Minimal Portfolio",
+    "style_prompt_source": "references/style-template-library.md",
+    "style_prompt_profile": {
+      "name": "kc-24 - Polished Minimal Portfolio",
+      "selected_prompt": "Strict grid, top-left nav, huge numbers, black/gray palette, negative space, portfolio-grade restraint.",
+      "visual_dna": "Architectural minimalism with high whitespace, compact metadata, thin rules, monochrome grids, and dark reset slides.",
+      "palette": "Light gray #f2f2f0, white, black #050505, muted gray #666660.",
+      "typography": "Inter or Helvetica-like sans with huge numbers and compact mono metadata.",
+      "texture_material": "Flat digital paper, no gradients, no decorative texture.",
+      "composition": "Strict grid, asymmetric split pages, image/list sections, timelines, logo grids, and decision endings.",
+      "text_in_image_policy": "All exact slide text stays as HTML text; images are proof surfaces only.",
+      "must_preserve": ["action titles", "pack metadata", "image slot ownership", "QA artifact trail"],
+      "must_avoid": ["decorative gradients", "generic icons", "crowded cards", "fake logos", "unsupported benchmark claims"],
+      "safety_normalization": "No protected template assets or brand-owned layouts are copied."
+    },
+    "image_generation_strategy": "none",
+    "assumptions": [
+      "Fixture-level SVG screenshots are acceptable until a browser capture tool is available.",
+      "This case study demonstrates mechanism readiness, not a client deck for an external brand."
+    ]
+  },
+  "slides": [
+    {
+      "number": 1,
+      "layout": "custom-pm-hero-index",
+      "action_title": "A style seed becomes real only after it has a pack",
+      "role": "Hook",
+      "key_message": "The target is not more style words; the target is reusable HTML production.",
+      "evidence": ["style-template-library.md defines kc-24 as the P0 HTML signature pack target"],
+      "visual": "Sparse hero with top-left nav and compact metadata",
+      "source_refs": ["references/style-template-library.md"]
+    },
+    {
+      "number": 2,
+      "layout": "custom-pm-stamp-field",
+      "action_title": "The benchmark gap is template depth, not taste",
+      "role": "Benchmark gap",
+      "key_message": "Guizang is strong because it turns visual taste into templates, layouts, and checks.",
+      "evidence": ["benchmark-synthesis.md records Guizang's lock-system mechanism"],
+      "visual": "Proof stamps around one restrained claim",
+      "source_refs": ["references/benchmark-synthesis.md"]
+    },
+    {
+      "number": 3,
+      "layout": "custom-pm-number-split",
+      "action_title": "Fourteen layouts give the pack enough reuse surface",
+      "role": "Pack proof",
+      "key_message": "A pack needs more than a cover and a content slide; it needs enough roles to build a deck.",
+      "evidence": ["layout-registry.json contains 14 custom-pm layouts"],
+      "visual": "Oversized layout count with a short explanation",
+      "source_refs": ["assets/html-signature-packs/portfolio-minimal/layout-registry.json"]
+    },
+    {
+      "number": 4,
+      "layout": "custom-pm-image-grid",
+      "action_title": "A proof wall makes the visual system inspectable",
+      "role": "Visual proof",
+      "key_message": "Local images are owned by named slots so the deck can be checked and repaired.",
+      "evidence": ["images/04-pack-surface.svg uses a 16:10 slot"],
+      "visual": "Strict image grid with local SVG proof surface",
+      "source_refs": ["examples/case-studies/portfolio-minimal/images/04-pack-surface.svg"],
+      "asset_needs": ["images/04-pack-surface.svg"]
+    },
+    {
+      "number": 5,
+      "layout": "custom-pm-photo-list",
+      "action_title": "Each visual choice must carry a deck job",
+      "role": "Design rule",
+      "key_message": "The pack keeps image treatment tied to evidence, process, or audience shift.",
+      "evidence": ["html-visual-systems.md requires visible image slots and distinct slide jobs"],
+      "visual": "50:50 visual and structured list split",
+      "source_refs": ["references/html-visual-systems.md"]
+    },
+    {
+      "number": 6,
+      "layout": "custom-pm-minimal-map",
+      "action_title": "The library now routes style by deck job",
+      "role": "Routing proof",
+      "key_message": "Forty-four styles become useful when the agent can choose one by audience and lane.",
+      "evidence": ["style-template-library.md maps deck jobs to style seeds"],
+      "visual": "Minimal map with callout labels",
+      "source_refs": ["references/style-template-library.md"]
+    },
+    {
+      "number": 7,
+      "layout": "custom-pm-vertical-timeline",
+      "action_title": "The shortest path to ninety-nine is staged",
+      "role": "Roadmap",
+      "key_message": "First lock Portfolio Minimal, then Data Story, then editorial and product packs.",
+      "evidence": ["style-template-library.md names the P0 and P1 pack sequence"],
+      "visual": "Vertical timeline from kc-24 to kc-11",
+      "source_refs": ["references/style-template-library.md"]
+    },
+    {
+      "number": 8,
+      "layout": "custom-pm-dark-network",
+      "action_title": "A dark reset reveals the system behind the slides",
+      "role": "System map",
+      "key_message": "The pack connects SKILL routing, style library, template, case study, and checks.",
+      "evidence": ["run_checks.py now includes signature-pack checking after integration"],
+      "visual": "Dark network of production artifacts",
+      "source_refs": ["scripts/run_checks.py"]
+    },
+    {
+      "number": 9,
+      "layout": "custom-pm-three-steps",
+      "action_title": "The pack turns taste into three repeatable moves",
+      "role": "Mechanism",
+      "key_message": "Choose a style seed, bind it to layouts, then prove it with QA artifacts.",
+      "evidence": ["portfolio-minimal README states the pack contract"],
+      "visual": "Three-column operating model with huge step numbers",
+      "source_refs": ["assets/html-signature-packs/portfolio-minimal/README.md"]
+    },
+    {
+      "number": 10,
+      "layout": "custom-pm-logo-grid",
+      "action_title": "Monochrome grids keep references honest",
+      "role": "Boundary",
+      "key_message": "The pack can show approved marks or text references without inventing fake logos.",
+      "evidence": ["style-template-library.md forbids protected asset copying"],
+      "visual": "Text-only logo grid with approved-reference posture",
+      "source_refs": ["references/style-template-library.md"]
+    },
+    {
+      "number": 11,
+      "layout": "custom-pm-problem-solution",
+      "action_title": "The old Cat had guidance; the new Cat has a pack",
+      "role": "Before after",
+      "key_message": "The improvement is a concrete production surface that a future deck can reuse.",
+      "evidence": ["assets/html-signature-packs/portfolio-minimal exists as a reusable pack"],
+      "visual": "Two-column contrast divided by a heavy vertical rule",
+      "source_refs": ["assets/html-signature-packs/portfolio-minimal"]
+    },
+    {
+      "number": 12,
+      "layout": "custom-pm-closing-decision",
+      "action_title": "The next move is to browser-capture this pack",
+      "role": "Closing",
+      "key_message": "The deterministic pack is in place; actual browser PNG capture is the final evidence upgrade.",
+      "evidence": ["qa-report.md labels current visual artifacts as fixture-level"],
+      "visual": "Centered decision statement with next evidence point",
+      "source_refs": ["examples/case-studies/portfolio-minimal/qa-report.md"]
+    }
+  ]
+}

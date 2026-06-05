@@ -1,0 +1,92 @@
+{
+  "pack": "kc-24-portfolio-minimal",
+  "style_seed": "kc-24",
+  "name": "Portfolio Minimal",
+  "layout_count": 14,
+  "layouts": [
+    {
+      "layout": "custom-pm-hero-index",
+      "class": "pm-hero-index",
+      "role": "Cover or section opening",
+      "contract": "Sparse cover with top-left nav, tiny metadata, and a compact central promise."
+    },
+    {
+      "layout": "custom-pm-stamp-field",
+      "class": "pm-stamp-field",
+      "role": "Positioning or category map",
+      "contract": "Scattered tags or proof stamps around one disciplined title block."
+    },
+    {
+      "layout": "custom-pm-number-split",
+      "class": "pm-number-split",
+      "role": "Metric-backed insight",
+      "contract": "Narrative text on one side and one oversized number or ratio on the other."
+    },
+    {
+      "layout": "custom-pm-image-grid",
+      "class": "pm-image-grid",
+      "role": "Portfolio or proof wall",
+      "contract": "Tight image grid with strict gutters, one local image slot, and short captions."
+    },
+    {
+      "layout": "custom-pm-photo-list",
+      "class": "pm-photo-list",
+      "role": "Image plus structured list",
+      "contract": "50:50 visual/text split with editorial labels and high whitespace."
+    },
+    {
+      "layout": "custom-pm-minimal-map",
+      "class": "pm-minimal-map",
+      "role": "Footprint, market, or ecosystem map",
+      "contract": "Silhouette or abstract map with thin callout leaders and few labels."
+    },
+    {
+      "layout": "custom-pm-vertical-timeline",
+      "class": "pm-vertical-timeline",
+      "role": "History, rollout, or roadmap",
+      "contract": "Central vertical rule with alternating years and short evidence notes."
+    },
+    {
+      "layout": "custom-pm-dark-network",
+      "class": "pm-dark-network",
+      "role": "System reset or relationship map",
+      "contract": "Dark reset slide with thin white network lines and labeled nodes."
+    },
+    {
+      "layout": "custom-pm-three-steps",
+      "class": "pm-three-steps",
+      "role": "Operating model or method",
+      "contract": "Three columns anchored by huge step numbers and compact explanations."
+    },
+    {
+      "layout": "custom-pm-logo-grid",
+      "class": "pm-logo-grid",
+      "role": "Partners, references, or capability catalog",
+      "contract": "Monochrome grid cells with text-only logo placeholders or approved marks."
+    },
+    {
+      "layout": "custom-pm-problem-solution",
+      "class": "pm-problem-solution",
+      "role": "Before/after or contradiction",
+      "contract": "Two blocks divided by a heavy rule, with action titles inside each side."
+    },
+    {
+      "layout": "custom-pm-equation",
+      "class": "pm-equation",
+      "role": "Mechanism or formula",
+      "contract": "Large type equation with minimal arrows and one explanatory note."
+    },
+    {
+      "layout": "custom-pm-arrow-process",
+      "class": "pm-arrow-process",
+      "role": "Linear process",
+      "contract": "Large black arrows with white labels and small footnotes."
+    },
+    {
+      "layout": "custom-pm-closing-decision",
+      "class": "pm-closing-decision",
+      "role": "Decision or final handoff",
+      "contract": "Centered dark or light decision statement with owner, artifact, and deadline."
+    }
+  ]
+}

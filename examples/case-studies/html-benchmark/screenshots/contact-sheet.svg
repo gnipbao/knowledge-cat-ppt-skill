@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-label="HTML benchmark contact sheet">
+  <rect width="1440" height="980" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#050505">
+    <text x="40" y="44">Knowledge Cat HTML Benchmark Contact Sheet</text>
+  </g>
+  <g stroke="#d6d6d0" stroke-width="1" fill="#f2f2f0">
+    <rect x="40" y="80" width="420" height="236"/>
+    <rect x="510" y="80" width="420" height="236" fill="#050505"/>
+    <rect x="980" y="80" width="420" height="236"/>
+    <rect x="40" y="370" width="420" height="236"/>
+    <rect x="510" y="370" width="420" height="236"/>
+    <rect x="980" y="370" width="420" height="236"/>
+    <rect x="40" y="660" width="420" height="236" fill="#050505"/>
+    <rect x="510" y="660" width="420" height="236"/>
+    <rect x="980" y="660" width="420" height="236"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">
+    <text x="64" y="292" fill="#050505">01 HERO</text>
+    <text x="534" y="292" fill="#ffffff">02 STATEMENT</text>
+    <text x="1004" y="292" fill="#050505">03 TWO-COL</text>
+    <text x="64" y="582" fill="#050505">04 IMAGE</text>
+    <text x="534" y="582" fill="#050505">05 COMPARISON</text>
+    <text x="1004" y="582" fill="#050505">06 PROCESS</text>
+    <text x="64" y="872" fill="#ffffff">07 SYSTEM MAP</text>
+    <text x="534" y="872" fill="#050505">08 DASHBOARD</text>
+    <text x="1004" y="872" fill="#050505">09 CLOSING</text>
+  </g>
+</svg>

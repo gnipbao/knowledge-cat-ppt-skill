@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio Minimal pack surface</title>
+  <desc id="desc">A monochrome proof surface showing a strict grid, large numbers, image slots, and layout registry tiles.</desc>
+  <rect width="1600" height="1000" fill="#f2f2f0"/>
+  <rect x="96" y="88" width="1408" height="824" fill="#fff" stroke="#cfcfca"/>
+  <g fill="#050505" font-family="Inter, Helvetica, Arial, sans-serif">
+    <text x="140" y="160" font-size="34" font-weight="700">KC-24 PORTFOLIO MINIMAL</text>
+    <text x="140" y="232" font-size="156" font-weight="790">14</text>
+    <text x="382" y="218" font-size="24" fill="#666660">registered layouts</text>
+  </g>
+  <g stroke="#050505" stroke-width="2" fill="none">
+    <line x1="140" y1="300" x2="1460" y2="300"/>
+    <line x1="140" y1="516" x2="1460" y2="516"/>
+    <line x1="140" y1="732" x2="1460" y2="732"/>
+    <line x1="470" y1="300" x2="470" y2="840"/>
+    <line x1="800" y1="300" x2="800" y2="840"/>
+    <line x1="1130" y1="300" x2="1130" y2="840"/>
+  </g>
+  <g font-family="Inter, Helvetica, Arial, sans-serif" fill="#050505">
+    <text x="166" y="372" font-size="28" font-weight="700">Hero Index</text>
+    <text x="496" y="372" font-size="28" font-weight="700">Number Split</text>
+    <text x="826" y="372" font-size="28" font-weight="700">Image Grid</text>
+    <text x="1156" y="372" font-size="28" font-weight="700">Timeline</text>
+    <text x="166" y="588" font-size="28" font-weight="700">Dark Network</text>
+    <text x="496" y="588" font-size="28" font-weight="700">Three Steps</text>
+    <text x="826" y="588" font-size="28" font-weight="700">Logo Grid</text>
+    <text x="1156" y="588" font-size="28" font-weight="700">Decision</text>
+    <text x="166" y="804" font-size="18" fill="#666660">strict grid</text>
+    <text x="496" y="804" font-size="18" fill="#666660">huge numbers</text>
+    <text x="826" y="804" font-size="18" fill="#666660">named image slots</text>
+    <text x="1156" y="804" font-size="18" fill="#666660">QA artifacts</text>
+  </g>
+</svg>

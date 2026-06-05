@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Slide 1 screenshot artifact">
+  <rect width="1280" height="720" fill="#f2f2f0"/>
+  <text x="72" y="70" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#050505">01. HTML BENCHMARK</text>
+  <line x1="72" y1="90" x2="270" y2="90" stroke="#050505" stroke-width="2"/>
+  <text x="72" y="430" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" fill="#050505">HTML needs a</text>
+  <text x="72" y="512" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" fill="#050505">production lock.</text>
+  <line x1="72" y1="560" x2="470" y2="560" stroke="#050505" stroke-width="6"/>
+</svg>

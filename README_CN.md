@@ -6,7 +6,7 @@
 
 知识猫 PPT 是一个开源 Agent Skill，用来创建、审阅和修复高质量演示文稿。它兼容 Codex、Claude Code，以及其他能够读取 `SKILL.md` 的 Agent。它不是一句“帮我做得好看点”的提示词，而是一套完整生产流程：先明确受众变化，再选择输出模式，规划叙事和页面，生成交付物，最后做质量验证。
 
-当前版本：`0.6.0`
+当前版本：`0.9.0`
 
 ## 亮点
 
@@ -16,6 +16,8 @@
 - 建立证据追踪：数字、引用、截图、假设、外部资料都要有来源或明确不确定性。
 - 内置 HTML deck 模板：键盘导航、打印 CSS、明暗主题、无外部依赖。
 - 内置 JSON deck plan 校验、HTML deck 校验和仓库健康检查。
+- 内置 44 个 PPT 风格种子、常见 PPT 风格网站雷达，以及用于超越 Guizang 的 HTML signature pack 路线。
+- 已落地 Portfolio Minimal HTML signature pack：14 个版式、12 页案例、QA artifact 和专用 pack 校验器。
 - 面向开源发布：GitHub Actions、Issue 模板、PR 模板、发布清单、路线图和安全说明。
 - 同时兼容 Codex local skills 与 Claude Code 风格的 skills。
 
@@ -123,6 +125,18 @@ Use $knowledge-cat-ppt-skill to build a browser-based HTML deck from this outlin
 Use $knowledge-cat-ppt-skill to create a visual-first social carousel deck. Keep the text editable unless the image-first tradeoff is necessary.
 ```
 
+使用 44 个风格种子库：
+
+```md
+Use $knowledge-cat-ppt-skill. 从模板库里为我的主题选择最合适的风格，说明输出模式取舍，然后先生成 deck brief 和 slide plan。
+```
+
+使用 Portfolio Minimal signature pack：
+
+```md
+Use $knowledge-cat-ppt-skill. 使用 kc-24 Portfolio Minimal signature pack 生成 HTML deck，使用 pack layout registry，包含本地图片槽位，产出 screenshots/contact sheet，并运行 signature-pack checks。
+```
+
 ## 输出模式
 
 | 模式 | 适用场景 | 主要取舍 |
@@ -148,6 +162,47 @@ python3 scripts/validate_html_deck.py /tmp/kc-demo-deck/index.html
 ```
 
 模板包含 16:9 桌面画布、移动端堆叠布局、键盘导航、打印 CSS、明暗主题、action title 页面结构和无外部依赖实现。
+
+## 风格模板库
+
+知识猫 PPT 内置 44 个风格种子，文件是：
+
+```txt
+references/style-template-library.md
+```
+
+它不是简单堆 prompt，而是把风格变成路由系统：适用场景、默认输出模式、受保护风格的泛化规则，以及优先落地的 signature pack 路线。
+
+可直接复制的测试提示词在：
+
+```txt
+docs/TEMPLATE_LIBRARY_PROMPTS.md
+```
+
+## Portfolio Minimal Signature Pack
+
+第一个已落地的 HTML signature pack 是 `kc-24` Portfolio Minimal：
+
+```txt
+assets/html-signature-packs/portfolio-minimal/
++-- README.md
++-- layout-registry.json
++-- template.html
+```
+
+它包含 14 个 `custom-pm-*` 版式和 12 页案例：
+
+```txt
+examples/case-studies/portfolio-minimal/
+```
+
+运行专用校验：
+
+```bash
+python3 scripts/check_signature_pack.py portfolio-minimal
+```
+
+该案例已经包含浏览器捕获的 PNG 截图和 contact sheet，因此 HTML 质量声明不是只基于代码检查。
 
 ## Deck Plan 校验
 

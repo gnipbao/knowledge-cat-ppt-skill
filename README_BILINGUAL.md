@@ -8,7 +8,7 @@ Story-first presentation production for AI agents.
 Knowledge Cat PPT is an open-source Agent Skill for creating, reviewing, and repairing presentation decks. It is designed for Codex, Claude Code, and other skill-aware coding agents.  
 知识猫 PPT 是一个开源 Agent Skill，用来创建、审阅和修复高质量演示文稿，兼容 Codex、Claude Code 和其他能读取 `SKILL.md` 的 Agent。
 
-Current version / 当前版本：`0.6.0`
+Current version / 当前版本：`0.9.0`
 
 ## Highlights / 亮点
 
@@ -18,6 +18,8 @@ Current version / 当前版本：`0.6.0`
 | Output-lane routing for native editable PPTX, HTML decks, image-first PPTX, and review-only workflows. | 支持原生可编辑 PPTX、HTML 演示、图像优先 PPTX 和 review-only 诊断模式。 |
 | Evidence tracking for claims, quotes, data, assumptions, screenshots, and source materials. | 对数字、引用、假设、截图和外部资料进行证据追踪。 |
 | HTML deck starter with keyboard navigation, print CSS, light/dark themes, and no external dependencies. | 内置 HTML deck 模板，支持键盘导航、打印 CSS、明暗主题且无外部依赖。 |
+| Curated 44-style template library with PPT style-site radar and Guizang-surpass signature-pack targets. | 内置 44 个 PPT 风格种子、常见风格网站雷达，以及用于超越 Guizang 的 signature pack 路线。 |
+| Portfolio Minimal HTML signature pack with 14 layouts, a 12-slide case study, QA artifacts, and a dedicated checker. | 已落地 Portfolio Minimal HTML signature pack：14 个版式、12 页案例、QA artifact 和专用校验器。 |
 | JSON deck-plan validator, HTML validator, repository checks, GitHub Actions, and open-source release docs. | 内置 deck plan 校验、HTML 校验、仓库检查、GitHub Actions 和开源发布文档。 |
 
 ## Three Production Modes / 三种生产模式
@@ -95,6 +97,18 @@ Image-first deck / 生成图像优先 deck：
 Use $knowledge-cat-ppt-skill to create a visual-first social carousel deck. Keep the text editable unless the image-first tradeoff is necessary.
 ```
 
+Template library / 模板库：
+
+```md
+Use $knowledge-cat-ppt-skill. Choose the best style from the template library for my topic, explain the lane tradeoff, then create a deck brief and slide plan.
+```
+
+Portfolio Minimal signature pack / Portfolio Minimal 模板包：
+
+```md
+Use $knowledge-cat-ppt-skill. Build a browser-based HTML deck using the kc-24 Portfolio Minimal signature pack, produce screenshots/contact sheet, and run signature-pack checks.
+```
+
 ## Output Lanes / 输出模式
 
 | Lane / 模式 | Use when / 适用场景 | Main tradeoff / 主要取舍 |
@@ -124,6 +138,14 @@ Run all bundled checks / 运行全部检查：
 ```bash
 python3 scripts/run_checks.py
 ```
+
+## Template Library / 模板库
+
+The 44-style template library lives in `references/style-template-library.md`; copy-ready prompts live in `docs/TEMPLATE_LIBRARY_PROMPTS.md`.  
+44 个风格种子库位于 `references/style-template-library.md`；可直接复制的提示词位于 `docs/TEMPLATE_LIBRARY_PROMPTS.md`。
+
+The first implemented HTML signature pack is `kc-24` Portfolio Minimal, with a 14-layout registry, 12-slide case study, browser screenshots, contact sheet, QA report, and `scripts/check_signature_pack.py`.  
+第一个已落地的 HTML signature pack 是 `kc-24` Portfolio Minimal，包含 14 个版式、12 页案例、浏览器截图、contact sheet、QA 报告和 `scripts/check_signature_pack.py`。
 
 ## How The Skill Works / 工作方式
 

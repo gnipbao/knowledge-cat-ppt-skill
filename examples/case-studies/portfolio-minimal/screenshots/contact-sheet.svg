@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio Minimal contact sheet</title>
+  <desc id="desc">Fixture-level contact sheet showing twelve Portfolio Minimal slides and their theme rhythm.</desc>
+  <rect width="1800" height="1200" fill="#e8e8e4"/>
+  <g font-family="Inter, Helvetica, Arial, sans-serif">
+    <text x="80" y="70" font-size="32" font-weight="760" fill="#050505">Portfolio Minimal Signature Pack Contact Sheet</text>
+    <text x="80" y="108" font-size="16" fill="#666660">Theme rhythm: L L D L D L L D L D L D | 12 slides | 12 unique case-study layouts</text>
+  </g>
+  <g font-family="Inter, Helvetica, Arial, sans-serif">
+    <g transform="translate(80 150)">
+      <rect width="390" height="220" fill="#f2f2f0" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">01 HERO INDEX</text><text x="24" y="164" font-size="38" font-weight="760">Style seed becomes pack</text>
+    </g>
+    <g transform="translate(510 150)">
+      <rect width="390" height="220" fill="#f2f2f0" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">02 STAMP FIELD</text><text x="24" y="164" font-size="38" font-weight="760">Template depth wins</text>
+    </g>
+    <g transform="translate(940 150)">
+      <rect width="390" height="220" fill="#050505" stroke="#050505"/><text x="24" y="48" font-size="16" fill="#aaa69b">03 NUMBER SPLIT</text><text x="24" y="164" font-size="72" font-weight="790" fill="#f7f7f3">14</text>
+    </g>
+    <g transform="translate(80 410)">
+      <rect width="390" height="220" fill="#ffffff" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">04 IMAGE GRID</text><rect x="24" y="72" width="160" height="112" fill="#f2f2f0" stroke="#cfcfca"/><rect x="204" y="72" width="70" height="50" fill="#f2f2f0" stroke="#cfcfca"/><rect x="292" y="72" width="70" height="50" fill="#f2f2f0" stroke="#cfcfca"/>
+    </g>
+    <g transform="translate(510 410)">
+      <rect width="390" height="220" fill="#050505" stroke="#050505"/><text x="24" y="48" font-size="16" fill="#aaa69b">05 PHOTO LIST</text><text x="24" y="164" font-size="34" font-weight="760" fill="#f7f7f3">Visual choice has a job</text>
+    </g>
+    <g transform="translate(940 410)">
+      <rect width="390" height="220" fill="#f2f2f0" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">06 MINIMAL MAP</text><circle cx="140" cy="118" r="5" fill="#050505"/><circle cx="230" cy="86" r="5" fill="#050505"/><circle cx="280" cy="150" r="5" fill="#050505"/>
+    </g>
+    <g transform="translate(80 670)">
+      <rect width="390" height="220" fill="#f2f2f0" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">07 TIMELINE</text><line x1="42" y1="76" x2="42" y2="184" stroke="#050505"/><text x="70" y="104" font-size="22" font-weight="760">KC-24</text><text x="70" y="154" font-size="22" font-weight="760">KC-25</text>
+    </g>
+    <g transform="translate(510 670)">
+      <rect width="390" height="220" fill="#050505" stroke="#050505"/><text x="24" y="48" font-size="16" fill="#aaa69b">08 DARK NETWORK</text><circle cx="110" cy="120" r="6" stroke="#f7f7f3" fill="none"/><circle cx="235" cy="88" r="6" stroke="#f7f7f3" fill="none"/><line x1="116" y1="119" x2="229" y2="90" stroke="#55554d"/>
+    </g>
+    <g transform="translate(940 670)">
+      <rect width="390" height="220" fill="#f2f2f0" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">09 THREE STEPS</text><text x="24" y="162" font-size="58" font-weight="790">01 02 03</text>
+    </g>
+    <g transform="translate(80 930)">
+      <rect width="390" height="220" fill="#050505" stroke="#050505"/><text x="24" y="48" font-size="16" fill="#aaa69b">10 LOGO GRID</text><text x="24" y="142" font-size="28" font-weight="760" fill="#f7f7f3">HTML PLAN QA PACK</text>
+    </g>
+    <g transform="translate(510 930)">
+      <rect width="390" height="220" fill="#f2f2f0" stroke="#cfcfca"/><text x="24" y="48" font-size="16" fill="#666660">11 BEFORE AFTER</text><line x1="190" y1="72" x2="190" y2="184" stroke="#050505" stroke-width="6"/><text x="24" y="138" font-size="26" font-weight="760">Guidance</text><text x="220" y="138" font-size="26" font-weight="760">Pack</text>
+    </g>
+    <g transform="translate(940 930)">
+      <rect width="390" height="220" fill="#050505" stroke="#050505"/><text x="24" y="48" font-size="16" fill="#aaa69b">12 DECISION</text><text x="24" y="150" font-size="35" font-weight="760" fill="#f7f7f3">Browser-capture next</text>
+    </g>
+  </g>
+</svg>

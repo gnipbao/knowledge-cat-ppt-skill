@@ -1,0 +1,100 @@
+{
+  "deck": {
+    "title": "HTML Lane Benchmark",
+    "audience": "Skill builders evaluating whether Knowledge Cat can produce a benchmark-grade HTML deck.",
+    "outcome": "Show that the HTML lane can combine story discipline, registered layouts, visual-system control, local image slots, and QA artifacts.",
+    "main_promise": "A browser deck becomes benchmark-grade when narrative, visual system, layout registry, and screenshot QA are locked together.",
+    "narrative_spine": "Tension -> mechanism -> proof -> operating standard -> next action",
+    "output_lane": "html-deck",
+    "format": "Single-folder browser deck with screenshot QA artifacts",
+    "slide_count": 9,
+    "design_posture": "Architectural Minimal",
+    "assumptions": [
+      "This is a local benchmark fixture, not a client deliverable.",
+      "The image asset is a synthetic local SVG used to test image-slot handling."
+    ]
+  },
+  "slides": [
+    {
+      "number": 1,
+      "layout": "hero",
+      "action_title": "HTML needs a production lock before it can become a reliable deck.",
+      "role": "Hook",
+      "key_message": "The HTML lane should feel like a controlled presentation product, not a freeform web page.",
+      "evidence": ["Knowledge Cat HTML production lock"],
+      "visual": "Sparse architectural hero with top navigation and one large claim."
+    },
+    {
+      "number": 2,
+      "layout": "statement",
+      "action_title": "The enemy is not bad CSS; it is unbounded layout freedom.",
+      "role": "Tension",
+      "key_message": "Without registered layouts, a browser deck drifts slide by slide.",
+      "evidence": ["Benchmark synthesis from Guizang and Frontend Slides mechanisms"],
+      "visual": "Dark typographic reset with a thin grid."
+    },
+    {
+      "number": 3,
+      "layout": "two-col",
+      "action_title": "Story, system, and QA must be chosen before slide markup begins.",
+      "role": "Framework",
+      "key_message": "The HTML deck contract starts with lane fit, visual system, layout registry, and QA plan.",
+      "evidence": ["Knowledge Cat core workflow"],
+      "visual": "Two-column operating contract."
+    },
+    {
+      "number": 4,
+      "layout": "image-annotation",
+      "action_title": "Local image slots make visual assets inspectable instead of decorative.",
+      "role": "Evidence",
+      "key_message": "Every image should have a named slot, ratio, alt text, and slide ownership.",
+      "evidence": ["HTML production lock image-slot contract"],
+      "visual": "Local SVG asset with slot metadata."
+    },
+    {
+      "number": 5,
+      "layout": "comparison",
+      "action_title": "Static validation catches structure before visual QA catches taste.",
+      "role": "Comparison",
+      "key_message": "Validators and screenshots solve different failures and both are needed.",
+      "evidence": ["validate_html_deck.py and QA artifact gate"],
+      "visual": "Sharp two-column comparison."
+    },
+    {
+      "number": 6,
+      "layout": "process",
+      "action_title": "The benchmark path runs from memo to plan to render to fix loop.",
+      "role": "Process",
+      "key_message": "A reliable HTML lane needs an explicit production sequence.",
+      "evidence": ["Knowledge Cat workflow"],
+      "visual": "Four-step process rail."
+    },
+    {
+      "number": 7,
+      "layout": "system-map",
+      "action_title": "Registered layouts turn visual taste into a reusable control system.",
+      "role": "Mechanism",
+      "key_message": "The deck should show distinct slide jobs while staying inside one visual system.",
+      "evidence": ["HTML visual systems registry"],
+      "visual": "Dark node-and-line map."
+    },
+    {
+      "number": 8,
+      "layout": "data-dashboard",
+      "action_title": "A benchmark deck should leave artifacts that another agent can audit.",
+      "role": "Proof",
+      "key_message": "The case study includes deck plan, HTML, local image, contact sheet, screenshot, and QA report.",
+      "evidence": ["Case-study file inventory"],
+      "visual": "Minimal artifact dashboard."
+    },
+    {
+      "number": 9,
+      "layout": "closing-decision",
+      "action_title": "The next quality jump is visual evidence, not more prompt instructions.",
+      "role": "Decision",
+      "key_message": "Knowledge Cat reaches benchmark quality by making rendered QA part of the repository contract.",
+      "evidence": ["P0 evolution plan"],
+      "visual": "Closing decision page with release gate."
+    }
+  ]
+}

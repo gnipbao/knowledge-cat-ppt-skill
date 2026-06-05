@@ -16,11 +16,14 @@ Do not treat "make slides" as a formatting task. First determine the audience, t
 Load only what the current task needs:
 
 - Read `references/benchmark-synthesis.md` when explaining the design philosophy, comparing PPT skill patterns, or improving this skill.
+- Read `references/benchmark-quality-gates.md` when the user asks for the best version, benchmark-grade output, open-source comparison, case-study evidence, or quality claims above normal client-ready delivery.
 - Read `references/engine-routing.md` before choosing native PPTX, HTML deck, image-first PPTX, or review-only mode.
 - Read `references/story-architecture.md` when turning source material into a deck brief, narrative spine, action titles, or slide plan.
 - Read `references/design-systems.md` when choosing style direction, layout family, visual tokens, imagery, or anti-generic design rules.
 - Read `references/template-replication.md` when the user provides an existing `.pptx`, screenshot, brand deck, style reference, or asks to clone a template.
 - Read `references/html-production-lock.md` before building production HTML decks, visual prototypes, browser-based talks, or HTML decks with local images/screenshots.
+- Read `references/html-visual-systems.md` after the HTML production lock when a browser deck needs benchmark-level visual rhythm, a reusable style package, or contact-sheet QA.
+- Read `references/style-template-library.md` when the user provides many PPT style prompts, asks for common PPT style websites, asks which style to choose, or wants Knowledge Cat to exceed Guizang-style HTML template depth.
 - Read `references/native-pptx-recipes.md` when building or repairing editable PowerPoint decks.
 - Read `references/html-deck-recipes.md` when building browser-based decks, fast visual prototypes, or single-file HTML presentations.
 - Read `references/style-prompt-intake.md` when the user uploads or pastes theme/style prompts, prompt tables, visual DNA blocks, AI image style prompts, or asks for Image2/GPT-Image-driven PPT styling.
@@ -30,6 +33,7 @@ Load only what the current task needs:
 - Use `scripts/validate_deck_plan.py` after writing a JSON deck plan. The expected shape is documented in `assets/deck-plan.schema.json`.
 - Use `scripts/init_deck_project.py` to create an HTML deck project from the bundled starter template.
 - Use `scripts/validate_html_deck.py` to statically check an HTML deck before browser QA.
+- Use `scripts/extract_pptx_text.py` to extract native PPTX text and check placeholder-like markers when editable PowerPoint quality matters.
 - Use `scripts/run_checks.py` before release or after changing bundled scripts, examples, or schemas.
 
 ## Non-Negotiable Rules
@@ -75,9 +79,9 @@ Use when the user asks for final slides.
 
 Select a production lane from `references/engine-routing.md`, choose a design system from `references/design-systems.md`, build the deck, then run QA from `references/qa-rubric.md`.
 
-If the selected lane is `html-deck`, read `references/html-production-lock.md` before `references/html-deck-recipes.md`.
+If the selected lane is `html-deck`, read `references/html-production-lock.md`, then `references/html-visual-systems.md` for benchmark-level decks, before `references/html-deck-recipes.md`.
 
-If the user uploaded or selected a theme/style prompt, read `references/style-prompt-intake.md` before `references/image-first-recipes.md` and prefer `image-first-pptx` unless editability, exact text, charts, tables, citations, or stakeholder collaboration matter more.
+If the user uploaded or selected a theme/style prompt, read `references/style-template-library.md` when it is a large style table or known preset, then `references/style-prompt-intake.md` before `references/image-first-recipes.md`, and prefer `image-first-pptx` unless editability, exact text, charts, tables, citations, or stakeholder collaboration matter more.
 
 ### Template Mode
 
@@ -101,7 +105,7 @@ Keep the original deck source of truth intact and derive outputs from it.
 
 Use when improving this skill itself, preparing a public repository, writing release docs, or evaluating open-source readiness.
 
-Read `references/open-source-product.md`. Keep `SKILL.md` concise, move detailed production guidance into references, and run bundled checks before claiming release readiness.
+Read `references/open-source-product.md` and `references/benchmark-quality-gates.md`. Keep `SKILL.md` concise, move detailed production guidance into references, and run bundled checks before claiming release readiness.
 
 ## Core Workflow
 
@@ -244,7 +248,11 @@ python3 scripts/validate_html_deck.py path/to/project/index.html
 
 Each final HTML slide must declare `data-layout`, `data-title`, `data-role`, and `data-theme`. Local images must use `images/` paths plus `data-image-slot` and target ratio metadata. Treat static validation errors as blockers.
 
-For native PPTX and image-first PPTX, follow the lane-specific recipe and clearly state any capability that was delegated to another skill or tool.
+For native PPTX and image-first PPTX, follow the lane-specific recipe and clearly state any capability that was delegated to another skill or tool. For native PPTX, extract text when possible:
+
+```bash
+python3 scripts/extract_pptx_text.py path/to/output.pptx --fail-on-placeholders
+```
 
 ### 8. QA And Iterate
 
@@ -265,6 +273,8 @@ python3 scripts/run_checks.py
 ```
 
 If the first pass finds no problems, inspect again more critically.
+
+When claiming benchmark-level quality, use `references/benchmark-quality-gates.md` and provide the evidence artifacts behind the score.
 
 ## Output Protocols
 
@@ -342,7 +352,7 @@ Score production outputs out of 100:
 - Output-lane correctness and technical reliability: 10
 - QA loop and handoff: 10
 
-Below 70: do not deliver as final. 70-84: workable draft. 85-94: client-ready with minor risk. 95+: benchmark-level.
+Below 70: do not deliver as final. 70-84: workable draft. 85-94: client-ready with minor risk. 95+: benchmark-level only when the gate evidence in `references/benchmark-quality-gates.md` is present.
 
 Before final response, confirm:
 

@@ -12,6 +12,7 @@ An open-source Agent Skill is product-grade only when a new user can answer:
 - How do I install it?
 - How do I run a smoke test?
 - How do I know the output is good?
+- What evidence supports any benchmark-grade claim?
 - How do I contribute without breaking the workflow?
 
 ## Required Repository Surfaces
@@ -24,7 +25,9 @@ For this project:
 - `references/`: detailed workflows loaded only when needed.
 - `assets/`: templates, schemas, and reusable output resources.
 - `scripts/`: deterministic checks and setup helpers.
-- `examples/`: retest prompts and sample artifacts.
+- `examples/`: retest prompts, sample artifacts, case studies, and failure fixtures.
+- `references/style-template-library.md`: curated style seeds, external style-site radar, and signature-pack targets.
+- `assets/html-signature-packs/`: reusable HTML signature packs with layout registries and templates.
 - `scripts/install_skill.py`: local install helper for Codex or Claude Code.
 - `CONTRIBUTING.md`: contribution rules.
 - `SECURITY.md`: handling untrusted inputs and templates.
@@ -52,12 +55,15 @@ Scripts:
 - [ ] all scripts run with standard Python where possible.
 - [ ] scripts fail clearly on missing files or invalid input.
 - [ ] validators have at least one bundled passing sample.
+- [ ] validators have negative fixtures that prove known bad examples fail.
+- [ ] PPTX text extraction has a bundled self-test.
 - [ ] install script has overwrite protection and ignores caches.
 
 Examples:
 - [ ] retest prompts cover vague request, source-to-deck, template, HTML, image-first, academic, review, and QA.
 - [ ] sample plan passes validation.
 - [ ] sample HTML can be generated and validates.
+- [ ] benchmark case studies declare their artifact contract and QA evidence.
 
 Docs:
 - [ ] README includes install, usage, layout, validation, and license.
@@ -87,6 +93,8 @@ Do not claim "best" without naming the axis. Better language:
 - "Designed to compose with native PPTX, HTML, and image-first presentation workflows."
 - "Not a replacement for format-specific renderers; it gives agents the control system around them."
 
+Use `references/benchmark-quality-gates.md` before making any 95+ or benchmark-grade claim.
+
 ## Product Failure Modes
 
 - Strong README but weak runtime `SKILL.md`.
@@ -95,3 +103,4 @@ Do not claim "best" without naming the axis. Better language:
 - Claims of editable PPTX while producing flattened images.
 - Validators that only check syntax, not deck-specific quality markers.
 - Examples that are too easy and never catch workflow drift.
+- Benchmark claims without screenshots, extraction logs, failure fixtures, or comparison axes.

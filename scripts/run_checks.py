@@ -11,6 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HTML_BENCHMARK = Path("examples/case-studies/html-benchmark")
 
 
 def run(cmd: list[str]) -> int:
@@ -37,6 +38,15 @@ def main() -> int:
         checks.append([sys.executable, "scripts/init_deck_project.py", str(temp), "--title", "Knowledge Cat Sample"])
         checks.append([sys.executable, "scripts/validate_html_deck.py", str(temp / "index.html")])
 
+    checks.append([sys.executable, "scripts/validate_deck_plan.py", str(HTML_BENCHMARK / "deck-plan.json")])
+    checks.append([sys.executable, "scripts/validate_html_deck.py", str(HTML_BENCHMARK / "index.html")])
+    checks.append([sys.executable, "scripts/check_html_qa_artifacts.py", str(HTML_BENCHMARK)])
+    checks.append([sys.executable, "scripts/validate_deck_plan.py", "examples/case-studies/portfolio-minimal/deck-plan.json"])
+    checks.append([sys.executable, "scripts/validate_html_deck.py", "examples/case-studies/portfolio-minimal/index.html"])
+    checks.append([sys.executable, "scripts/check_html_qa_artifacts.py", "examples/case-studies/portfolio-minimal"])
+    checks.append([sys.executable, "scripts/check_signature_pack.py", "portfolio-minimal"])
+    checks.append([sys.executable, "scripts/check_failure_fixtures.py"])
+    checks.append([sys.executable, "scripts/extract_pptx_text.py", "--self-test"])
     checks.append([sys.executable, "scripts/check_repo.py"])
 
     for cmd in checks:

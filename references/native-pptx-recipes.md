@@ -89,6 +89,12 @@ Minimum checks:
 - Sources/citations are present where needed.
 ```
 
+Extract text from the finished PPTX when possible. This catches placeholder text and gives a weak but useful signal that key slide copy is not fully flattened into images:
+
+```bash
+python3 scripts/extract_pptx_text.py path/to/output.pptx --fail-on-placeholders
+```
+
 If a renderer is available, render to images or PDF and inspect. If not, say the file-open/render QA was not completed.
 
 ## Common Failures

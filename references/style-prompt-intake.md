@@ -35,11 +35,14 @@ Classify the user input:
 |---|---|---|
 | Single style prompt | one paragraph or one named style | build one Style Prompt Profile |
 | Prompt table | rows with style name, use case, keywords, copyable prompt | ask which row to use, or choose the best row if the user gave a topic |
+| Large style library | many rows, style websites, or 20+ prompt presets | read `references/style-template-library.md`, shortlist 2-3 styles by deck job, then build one Style Prompt Profile |
 | Brand DNA | palette, fonts, layout rules, image treatment | preserve constraints and use image-first only if surfaces should be generated |
 | Screenshot/reference deck | visual sample rather than prompt text | route through template/profile extraction first |
 | Mixed style dump | many prompts with no selection | shortlist 2-3 styles by deck goal and ask once if needed |
 
 If the user says "直接按最合适的来", choose one style and state the assumption.
+
+When the user says the target is to surpass Guizang or another HTML-deck benchmark, do not merely choose a pretty image style. Use `references/style-template-library.md` to identify whether the chosen style should become an HTML signature pack, image-first profile, or native editable PPTX direction.
 
 ### 2. Extract A Style Prompt Profile
 
@@ -167,4 +170,3 @@ Before delivery:
 - Mixing several uploaded styles in one deck without a section-level reason.
 - Copying protected characters, brands, or living-artist style labels instead of extracting visual traits.
 - Generating beautiful slide surfaces that no longer match the deck's audience shift.
-

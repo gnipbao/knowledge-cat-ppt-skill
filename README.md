@@ -6,7 +6,7 @@ Story-first presentation production for AI agents.
 
 Knowledge Cat PPT is an open-source Agent Skill for creating, reviewing, and repairing presentation decks. It is designed for Codex, Claude Code, and other skill-aware coding agents. Instead of acting like a generic "make pretty slides" prompt, it gives the agent a production system: clarify the audience shift, choose the right output lane, build a slide plan, generate the deck, and verify the result.
 
-Current version: `0.6.0`
+Current version: `0.9.0`
 
 ## Highlights
 
@@ -17,6 +17,8 @@ Current version: `0.6.0`
 - JSON deck-plan validator and HTML deck validator.
 - HTML production lock for registered layouts, theme rhythm, image slots, screenshots, and rendered QA.
 - Uploaded theme/style prompt intake for Image2/GPT-Image-first PPT workflows.
+- Curated 44-style template library with common PPT style-site radar and Guizang-surpass signature-pack targets.
+- Portfolio Minimal HTML signature pack with a 14-layout registry, 12-slide case study, QA artifacts, and a dedicated pack checker.
 - Open-source repository hygiene checks, GitHub Actions workflow, issue templates, and release checklist.
 - Compatible with both Codex local skills and Claude Code style skills.
 
@@ -129,6 +131,18 @@ For an HTML deck:
 Use $knowledge-cat-ppt-skill to build a browser-based HTML deck from this outline. Make it keyboard navigable and run the bundled HTML validator.
 ```
 
+For the 44-style template library:
+
+```md
+Use $knowledge-cat-ppt-skill. Choose the best style from the template library for my topic, explain the lane tradeoff, then create a deck brief and slide plan.
+```
+
+For the Portfolio Minimal signature pack:
+
+```md
+Use $knowledge-cat-ppt-skill. Build a browser-based HTML deck using the kc-24 Portfolio Minimal signature pack. Use the pack layout registry, include a local image slot, produce screenshots/contact sheet, and run the signature-pack checks.
+```
+
 ## Output Lanes
 
 | Lane | Use when | Main tradeoff |
@@ -163,6 +177,46 @@ The starter includes:
 - Action-title aware slide structure
 - No external dependencies
 
+## Style Template Library
+
+Knowledge Cat includes a curated 44-style template library in `references/style-template-library.md`. The library turns pasted PPT style prompts into a routing system:
+
+- style seeds such as `kc-24` Portfolio Minimal, `kc-25` Minimal Data Story, `kc-28` Bold Editorial Magazine, `kc-26` Dark SaaS Product, and `kc-11` Architectural Blueprint
+- default output lanes for each style
+- protected-style normalization rules
+- a priority path for building signature packs that can compete with Guizang-style HTML deck depth
+
+Copy-ready prompts live in:
+
+```txt
+docs/TEMPLATE_LIBRARY_PROMPTS.md
+```
+
+## Portfolio Minimal Signature Pack
+
+The first implemented signature pack is `kc-24` Portfolio Minimal:
+
+```txt
+assets/html-signature-packs/portfolio-minimal/
++-- README.md
++-- layout-registry.json
++-- template.html
+```
+
+It includes 14 registered `custom-pm-*` layouts and a 12-slide case study:
+
+```txt
+examples/case-studies/portfolio-minimal/
+```
+
+Run the pack gate:
+
+```bash
+python3 scripts/check_signature_pack.py portfolio-minimal
+```
+
+The Portfolio Minimal case study includes browser-captured PNG slide screenshots and a browser contact sheet, so quality claims are backed by visual artifacts rather than code inspection alone.
+
 ## Deck Plan Validation
 
 Validate a JSON deck plan:
@@ -196,6 +250,7 @@ The checks validate:
 - sample deck plan
 - generated sample HTML deck
 - HTML structure
+- Portfolio Minimal signature pack and case study
 - required repository files
 - changelog/version consistency
 - cache and generated-file hygiene
@@ -222,10 +277,14 @@ knowledge-cat-ppt-skill/
 |   +-- deck-plan.schema.json
 |   +-- html-template/
 |       +-- index.html
+|   +-- html-signature-packs/
+|       +-- portfolio-minimal/
 +-- examples/
 |   +-- retest-prompts.md
 |   +-- sample-deck-plan.json
 |   +-- sample-html-deck/
+|   +-- case-studies/
+|       +-- portfolio-minimal/
 +-- references/
 |   +-- benchmark-synthesis.md
 |   +-- design-systems.md
@@ -238,17 +297,20 @@ knowledge-cat-ppt-skill/
 |   +-- qa-rubric.md
 |   +-- story-architecture.md
 |   +-- style-prompt-intake.md
+|   +-- style-template-library.md
 |   +-- template-replication.md
 +-- scripts/
 |   +-- check_repo.py
 |   +-- init_deck_project.py
 |   +-- install_skill.py
 |   +-- run_checks.py
+|   +-- check_signature_pack.py
 |   +-- validate_deck_plan.py
 |   +-- validate_html_deck.py
 +-- docs/
 |   +-- PUBLISHING.md
 |   +-- ROADMAP.md
+|   +-- TEMPLATE_LIBRARY_PROMPTS.md
 |   +-- images/
 ```
 

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Minimal Signature Pack</title>
+  <style>
+    :root {
+      --bg: #f2f2f0;
+      --paper: #ffffff;
+      --ink: #050505;
+      --muted: #666660;
+      --line: #cfcfca;
+      --dark: #050505;
+      --dark-ink: #f7f7f3;
+      --safe-x: clamp(48px, 6vw, 92px);
+      --safe-y: clamp(34px, 5vh, 64px);
+      --font: Inter, Helvetica, Arial, sans-serif;
+      --mono: "SFMono-Regular", "Roboto Mono", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); overflow: hidden; }
+    body.theme-dark { --bg: var(--dark); --paper: #111; --ink: var(--dark-ink); --muted: #aaa69b; --line: #3b3b36; }
+    .deck { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+    .slide { position: absolute; inset: 0; width: 100vw; height: 100vh; padding: var(--safe-y) var(--safe-x); display: grid; opacity: 0; pointer-events: none; transform: translateX(4vw); transition: opacity 220ms ease, transform 320ms ease; background: var(--bg); }
+    .slide.active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide.exit-left { transform: translateX(-4vw); }
+    .pm-nav { position: absolute; left: var(--safe-x); top: 28px; display: flex; gap: 18px; font: 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .pm-page { position: absolute; right: var(--safe-x); bottom: 24px; font: 12px/1 var(--mono); color: var(--muted); }
+    .pm-kicker { margin: 0 0 18px; font: 12px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .pm-title { margin: 0; font-size: clamp(46px, 6vw, 108px); line-height: 0.91; letter-spacing: 0; font-weight: 760; max-width: 13ch; }
+    .pm-headline { margin: 0; font-size: clamp(36px, 4.5vw, 74px); line-height: 0.96; letter-spacing: 0; font-weight: 720; max-width: 16ch; }
+    .pm-body { margin: 0; font-size: clamp(17px, 1.4vw, 23px); line-height: 1.42; color: var(--muted); max-width: 42ch; }
+    .pm-rule { height: 1px; background: var(--line); }
+    .pm-big { font-size: clamp(110px, 18vw, 260px); line-height: 0.78; font-weight: 790; letter-spacing: 0; }
+    .pm-label { font: 12px/1.2 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .pm-panel { border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 78%, transparent); padding: clamp(20px, 2.5vw, 36px); }
+    .pm-hero-index { align-content: end; gap: 28px; }
+    .pm-stamp-field { align-content: center; }
+    .pm-stamps { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 42px; max-width: 780px; }
+    .pm-stamp { border: 1px solid var(--ink); padding: 10px 14px; font: 12px/1 var(--mono); text-transform: uppercase; transform: rotate(var(--r, 0deg)); }
+    .pm-number-split, .pm-photo-list, .pm-problem-solution { grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+    .pm-image-grid { grid-template-rows: auto 1fr; gap: 28px; }
+    .pm-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; grid-template-rows: 1fr 1fr; gap: 10px; min-height: 0; }
+    .pm-grid .pm-shot:first-child { grid-row: span 2; }
+    .pm-shot { border: 1px solid var(--line); overflow: hidden; background: var(--paper); min-height: 0; }
+    .pm-shot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.25); }
+    .pm-list { display: grid; gap: 20px; }
+    .pm-list-row { display: grid; grid-template-columns: 92px 1fr; gap: 22px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .pm-minimal-map { grid-template-columns: .6fr 1fr; gap: 60px; align-items: center; }
+    .pm-map-canvas { height: 420px; border: 1px solid var(--line); position: relative; background: var(--paper); }
+    .pm-pin { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+    .pm-pin::after { content: attr(data-label); position: absolute; left: 18px; top: -4px; white-space: nowrap; font: 12px/1 var(--mono); color: var(--muted); }
+    .pm-vertical-timeline { grid-template-columns: .48fr 1fr; gap: 70px; align-items: center; }
+    .pm-timeline { position: relative; display: grid; gap: 26px; padding-left: 34px; }
+    .pm-timeline::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); }
+    .pm-time { display: grid; grid-template-columns: 92px 1fr; gap: 24px; align-items: start; }
+    .pm-dark-network { background: var(--dark); color: var(--dark-ink); align-content: center; }
+    .pm-network { position: relative; height: 500px; border: 1px solid #31312d; margin-top: 34px; }
+    .pm-node { position: absolute; width: 12px; height: 12px; border: 1px solid var(--dark-ink); border-radius: 50%; }
+    .pm-node::after { content: attr(data-label); position: absolute; left: 18px; top: -4px; font: 12px/1 var(--mono); color: #aaa69b; white-space: nowrap; }
+    .pm-line { position: absolute; height: 1px; background: #55554d; transform-origin: left center; }
+    .pm-three-steps { grid-template-rows: auto 1fr; gap: 48px; }
+    .pm-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .pm-step { border-left: 6px solid var(--ink); padding-left: 22px; display: grid; align-content: space-between; gap: 40px; }
+    .pm-logo-grid { grid-template-rows: auto 1fr; gap: 40px; }
+    .pm-logos { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
+    .pm-logo { min-height: 112px; display: grid; place-items: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 760; letter-spacing: 0.08em; }
+    .pm-closing-decision { align-content: center; justify-items: center; text-align: center; gap: 30px; }
+    .pm-nav-ui { position: fixed; right: 22px; bottom: 18px; display: flex; align-items: center; gap: 10px; color: var(--muted); font: 12px/1 var(--mono); z-index: 10; }
+    .pm-progress { width: 120px; height: 3px; background: color-mix(in srgb, var(--line) 74%, transparent); overflow: hidden; }
+    .pm-progress span { display: block; height: 100%; width: 0%; background: var(--ink); transition: width 220ms ease; }
+    body.theme-dark .pm-progress span { background: var(--dark-ink); }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" data-title="Portfolio Minimal Signature Pack" data-pack="kc-24-portfolio-minimal">
+    <section class="slide pm-hero-index active" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-hero-index" data-title="A style seed becomes real only after it has a pack" data-role="Hook" data-theme="light">
+      <div class="pm-nav"><span>01. PACK</span><span>KC-24</span></div>
+      <div>
+        <p class="pm-kicker">Knowledge Cat HTML</p>
+        <h1 class="pm-title">A style seed becomes real only after it has a pack</h1>
+      </div>
+      <p class="pm-body">The target is reusable HTML production: layouts, metadata, examples, and checks.</p>
+      <span class="pm-page">01 / 12</span>
+    </section>
+
+    <section class="slide pm-stamp-field" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-stamp-field" data-title="The benchmark gap is template depth, not taste" data-role="Benchmark gap" data-theme="light">
+      <div class="pm-nav"><span>02. BENCHMARK</span><span>GAP</span></div>
+      <h2 class="pm-headline">The benchmark gap is template depth, not taste</h2>
+      <div class="pm-stamps">
+        <span class="pm-stamp" style="--r:-3deg">template</span>
+        <span class="pm-stamp" style="--r:2deg">layouts</span>
+        <span class="pm-stamp" style="--r:-1deg">slots</span>
+        <span class="pm-stamp" style="--r:3deg">checks</span>
+        <span class="pm-stamp" style="--r:-2deg">contact sheet</span>
+      </div>
+      <span class="pm-page">02 / 12</span>
+    </section>
+
+    <section class="slide pm-number-split" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-number-split" data-title="Fourteen layouts give the pack enough reuse surface" data-role="Pack proof" data-theme="dark">
+      <div>
+        <p class="pm-kicker">Registry</p>
+        <h2 class="pm-headline">Fourteen layouts give the pack enough reuse surface</h2>
+        <p class="pm-body">A pack needs enough page roles to build a complete deck without returning to generic title-plus-bullets.</p>
+      </div>
+      <div>
+        <div class="pm-big">14</div>
+        <p class="pm-label">registered custom-pm layouts</p>
+      </div>
+      <span class="pm-page">03 / 12</span>
+    </section>
+
+    <section class="slide pm-image-grid" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-image-grid" data-title="A proof wall makes the visual system inspectable" data-role="Visual proof" data-theme="light">
+      <div>
+        <p class="pm-kicker">Proof wall</p>
+        <h2 class="pm-headline">A proof wall makes the visual system inspectable</h2>
+      </div>
+      <div class="pm-grid">
+        <figure class="pm-shot"><img src="images/04-pack-surface.svg" alt="Portfolio Minimal layout registry proof surface" data-image-slot="04-main-16x10" data-slot-ratio="16:10"></figure>
+        <div class="pm-panel"><p class="pm-label">Image slot</p><p class="pm-body">Named ownership and ratio metadata make visual QA possible.</p></div>
+        <div class="pm-panel"><p class="pm-label">Theme rhythm</p><p class="pm-body">Light pages carry evidence; dark pages reset the story.</p></div>
+        <div class="pm-panel"><p class="pm-label">Source truth</p><p class="pm-body">Deck plan, pack registry, and QA report stay together.</p></div>
+        <div class="pm-panel"><p class="pm-label">Repair path</p><p class="pm-body">A failing check points to a concrete artifact.</p></div>
+      </div>
+      <span class="pm-page">04 / 12</span>
+    </section>
+
+    <section class="slide pm-photo-list" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-photo-list" data-title="Each visual choice must carry a deck job" data-role="Design rule" data-theme="dark">
+      <div class="pm-panel">
+        <p class="pm-label">Visual role</p>
+        <h2 class="pm-headline">Each visual choice must carry a deck job</h2>
+      </div>
+      <div class="pm-list">
+        <div class="pm-list-row"><strong>01</strong><p class="pm-body">Evidence images preserve what the audience needs to inspect.</p></div>
+        <div class="pm-list-row"><strong>02</strong><p class="pm-body">Portfolio images prove rhythm and craft instead of decorating uncertainty.</p></div>
+        <div class="pm-list-row"><strong>03</strong><p class="pm-body">Generated images stay out of exact metrics, citations, and legal wording.</p></div>
+      </div>
+      <span class="pm-page">05 / 12</span>
+    </section>
+
+    <section class="slide pm-minimal-map" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-minimal-map" data-title="The library now routes style by deck job" data-role="Routing proof" data-theme="light">
+      <div>
+        <p class="pm-kicker">Style routing</p>
+        <h2 class="pm-headline">The library now routes style by deck job</h2>
+      </div>
+      <div class="pm-map-canvas" aria-label="Style route map">
+        <span class="pm-pin" style="left:18%;top:32%" data-label="business"></span>
+        <span class="pm-pin" style="left:46%;top:48%" data-label="HTML"></span>
+        <span class="pm-pin" style="left:68%;top:24%" data-label="image-first"></span>
+        <span class="pm-pin" style="left:74%;top:70%" data-label="technical"></span>
+      </div>
+      <span class="pm-page">06 / 12</span>
+    </section>
+
+    <section class="slide pm-vertical-timeline" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-vertical-timeline" data-title="The shortest path to ninety-nine is staged" data-role="Roadmap" data-theme="light">
+      <div>
+        <p class="pm-kicker">Sequence</p>
+        <h2 class="pm-headline">The shortest path to ninety-nine is staged</h2>
+      </div>
+      <div class="pm-timeline">
+        <div class="pm-time"><strong>KC-24</strong><p class="pm-body">Lock portfolio minimal first because it directly challenges Swiss HTML depth.</p></div>
+        <div class="pm-time"><strong>KC-25</strong><p class="pm-body">Add data story so Cat can win on evidence and decision structure.</p></div>
+        <div class="pm-time"><strong>KC-28</strong><p class="pm-body">Add editorial magazine for keynote and thought-leadership rhythm.</p></div>
+        <div class="pm-time"><strong>KC-11</strong><p class="pm-body">Add blueprint diagrams to own the technical explanation lane.</p></div>
+      </div>
+      <span class="pm-page">07 / 12</span>
+    </section>
+
+    <section class="slide pm-dark-network" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-dark-network" data-title="A dark reset reveals the system behind the slides" data-role="System map" data-theme="dark">
+      <div class="pm-nav"><span>08. SYSTEM</span><span>RESET</span></div>
+      <h2 class="pm-headline">A dark reset reveals the system behind the slides</h2>
+      <div class="pm-network" aria-label="Production artifact network">
+        <span class="pm-line" style="left:18%;top:40%;width:34%;transform:rotate(12deg)"></span>
+        <span class="pm-line" style="left:52%;top:46%;width:24%;transform:rotate(-18deg)"></span>
+        <span class="pm-line" style="left:30%;top:72%;width:42%;transform:rotate(-24deg)"></span>
+        <span class="pm-node" style="left:16%;top:38%" data-label="SKILL"></span>
+        <span class="pm-node" style="left:50%;top:47%" data-label="style library"></span>
+        <span class="pm-node" style="left:75%;top:38%" data-label="template"></span>
+        <span class="pm-node" style="left:30%;top:72%" data-label="case study"></span>
+        <span class="pm-node" style="left:72%;top:58%" data-label="checks"></span>
+      </div>
+      <span class="pm-page">08 / 12</span>
+    </section>
+
+    <section class="slide pm-three-steps" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-three-steps" data-title="The pack turns taste into three repeatable moves" data-role="Mechanism" data-theme="light">
+      <div>
+        <p class="pm-kicker">Mechanism</p>
+        <h2 class="pm-headline">The pack turns taste into three repeatable moves</h2>
+      </div>
+      <div class="pm-steps">
+        <div class="pm-step"><div class="pm-big">01</div><p class="pm-body">Choose one style seed by audience and lane.</p></div>
+        <div class="pm-step"><div class="pm-big">02</div><p class="pm-body">Bind the seed to registered layouts and image slots.</p></div>
+        <div class="pm-step"><div class="pm-big">03</div><p class="pm-body">Prove the output through validation and visual artifacts.</p></div>
+      </div>
+      <span class="pm-page">09 / 12</span>
+    </section>
+
+    <section class="slide pm-logo-grid" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-logo-grid" data-title="Monochrome grids keep references honest" data-role="Boundary" data-theme="dark">
+      <div>
+        <p class="pm-kicker">Boundary</p>
+        <h2 class="pm-headline">Monochrome grids keep references honest</h2>
+      </div>
+      <div class="pm-logos">
+        <div class="pm-logo">HTML</div><div class="pm-logo">PLAN</div><div class="pm-logo">QA</div><div class="pm-logo">PACK</div>
+        <div class="pm-logo">KC-24</div><div class="pm-logo">GRID</div><div class="pm-logo">IMAGE</div><div class="pm-logo">CHECK</div>
+      </div>
+      <span class="pm-page">10 / 12</span>
+    </section>
+
+    <section class="slide pm-problem-solution" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-problem-solution" data-title="The old Cat had guidance; the new Cat has a pack" data-role="Before after" data-theme="light">
+      <div>
+        <p class="pm-kicker">Before</p>
+        <h2 class="pm-headline">The old Cat had guidance</h2>
+        <p class="pm-body">References explained how a polished HTML deck should behave, but no signature pack carried the behavior.</p>
+      </div>
+      <div style="border-left:8px solid var(--ink);padding-left:42px">
+        <p class="pm-kicker">After</p>
+        <h2 class="pm-headline">The new Cat has a pack</h2>
+        <p class="pm-body">A registry, template, case study, QA report, and dedicated check now make the path reusable.</p>
+      </div>
+      <span class="pm-page">11 / 12</span>
+    </section>
+
+    <section class="slide pm-closing-decision" data-pack="kc-24-portfolio-minimal" data-style-seed="kc-24" data-layout="custom-pm-closing-decision" data-title="The next move is to browser-capture this pack" data-role="Closing" data-theme="dark">
+      <div class="pm-nav"><span>12. DECISION</span><span>NEXT EVIDENCE</span></div>
+      <p class="pm-kicker">99-point gate</p>
+      <h2 class="pm-title">The next move is to browser-capture this pack</h2>
+      <p class="pm-body">The deterministic pack is in place; actual browser PNG capture is the final evidence upgrade.</p>
+      <span class="pm-page">12 / 12</span>
+    </section>
+  </main>
+  <div class="pm-nav-ui" aria-hidden="true">
+    <span id="counter">1 / 12</span>
+    <div class="pm-progress"><span id="progress"></span></div>
+    <span>Prev / Next</span>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress");
+    let index = 0;
+    function syncTheme(slide) {
+      document.body.classList.toggle("theme-dark", slide.dataset.theme === "dark");
+    }
+    function show(next) {
+      if (!slides.length) return;
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.classList.toggle("exit-left", i < index);
+      });
+      syncTheme(slides[index]);
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      history.replaceState(null, "", `#${index + 1}`);
+    }
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " " || event.key === "PageDown") show(index + 1);
+      if (event.key === "ArrowLeft" || event.key === "PageUp") show(index - 1);
+      if (event.key === "Home") show(0);
+      if (event.key === "End") show(slides.length - 1);
+    });
+    window.addEventListener("hashchange", () => {
+      const value = Number(location.hash.replace("#", ""));
+      if (Number.isFinite(value) && value > 0) show(value - 1);
+    });
+    const initial = Number(location.hash.replace("#", ""));
+    show(Number.isFinite(initial) && initial > 0 ? initial - 1 : 0);
+  </script>
+</body>
+</html>

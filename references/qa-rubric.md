@@ -63,11 +63,10 @@ Check:
 For PPTX files, extract text when possible and search for placeholder patterns:
 
 ```bash
-python -m markitdown output.pptx
-python -m markitdown output.pptx | grep -iE "xxxx|lorem|ipsum|placeholder|todo|this.*(page|slide).*layout"
+python3 scripts/extract_pptx_text.py output.pptx --fail-on-placeholders
 ```
 
-Use equivalent extraction tools when `markitdown` is unavailable.
+Use equivalent extraction tools such as `markitdown` only when the bundled helper is unavailable.
 
 ## Visual QA
 
@@ -158,3 +157,6 @@ Also check:
 - `SKILL.md` links every reference it expects.
 - Sample deck plan passes validation.
 - Sample HTML deck can be initialized and statically validated.
+- Negative fixtures prove validators fail on known bad artifacts.
+- PPTX text extraction self-test passes.
+- Benchmark-quality claims follow `references/benchmark-quality-gates.md`.

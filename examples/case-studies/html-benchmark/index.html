@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Lane Benchmark</title>
+  <style>
+    :root {
+      --bg: #f2f2f0;
+      --ink: #050505;
+      --muted: #666661;
+      --line: #cecec8;
+      --panel: #ffffff;
+      --dark: #050505;
+      --dark-ink: #f7f7f3;
+      --safe-x: clamp(48px, 5.8vw, 78px);
+      --safe-y: clamp(36px, 5vh, 58px);
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font); }
+    body.theme-dark { background: var(--dark); color: var(--dark-ink); }
+    h1, h2, h3, p { margin: 0; letter-spacing: 0; }
+    .deck { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+    .slide { position: absolute; inset: 0; width: 100vw; height: 100vh; padding: var(--safe-y) var(--safe-x); display: grid; opacity: 0; pointer-events: none; transform: translateX(4vw); transition: opacity 220ms ease, transform 320ms ease; }
+    .slide.active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide.exit-left { transform: translateX(-4vw); }
+    .kicker { position: absolute; top: 42px; left: var(--safe-x); font: 800 11px/1 var(--mono); color: currentColor; text-transform: uppercase; }
+    .kicker::after { content: ""; position: absolute; top: 24px; left: 0; width: 190px; height: 1px; background: currentColor; }
+    .hero { align-content: end; gap: 26px; }
+    .hero-title { font-size: clamp(64px, 8.3vw, 118px); line-height: .9; font-weight: 820; max-width: 12ch; }
+    .action-title { font-size: clamp(42px, 5.2vw, 78px); line-height: .94; font-weight: 800; max-width: 13ch; }
+    .lead { font-size: clamp(18px, 1.7vw, 25px); line-height: 1.32; color: var(--muted); max-width: 38ch; }
+    body.theme-dark .lead { color: #b8b8b2; }
+    .statement { grid-template-columns: minmax(0, .9fr) minmax(300px, .65fr); align-items: end; gap: 68px; }
+    .two-col, .image-annotation, .comparison { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); align-items: center; gap: 64px; }
+    .evidence, .process, .system-map, .data-dashboard, .closing-decision { align-content: center; gap: 34px; }
+    .rule { width: 320px; height: 5px; background: currentColor; }
+    .thin-grid { position: absolute; inset: 96px 72px 96px 72px; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 96px 96px; opacity: .62; }
+    body.theme-dark .thin-grid { --line: #2a2a2a; opacity: 1; }
+    .list { display: grid; gap: 24px; }
+    .list-row { display: grid; grid-template-columns: 160px 1fr; gap: 26px; align-items: start; border-top: 1px solid var(--line); padding-top: 18px; }
+    .list-row strong { font: 800 16px/1 var(--mono); }
+    .list-row span { color: var(--muted); font-size: 20px; line-height: 1.3; }
+    .image-box { border: 1px solid var(--line); min-height: 410px; background: var(--panel); display: grid; }
+    .image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .compare-cell { border-left: 6px solid currentColor; padding: 18px 20px 24px; min-height: 260px; background: color-mix(in srgb, var(--panel) 72%, transparent); }
+    .compare-cell h3 { font-size: 26px; line-height: 1.05; margin-bottom: 42px; }
+    .compare-cell p { color: var(--muted); font-size: 18px; line-height: 1.35; }
+    body.theme-dark .compare-cell { background: #111; }
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .step { border-top: 5px solid currentColor; padding-top: 18px; min-height: 220px; }
+    .step b { font-size: 54px; line-height: .9; display: block; margin-bottom: 40px; }
+    .step span { color: var(--muted); font-size: 18px; line-height: 1.25; }
+    .map { position: relative; height: 420px; border: 1px solid #383838; }
+    .node { position: absolute; min-width: 132px; height: 42px; display: grid; place-items: center; border: 1px solid #f7f7f3; font: 800 11px/1 var(--mono); background: #050505; }
+    .wire { position: absolute; background: #777; }
+    .dash { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .metric { min-height: 190px; border: 1px solid var(--line); padding: 22px; display: grid; align-content: space-between; background: var(--panel); }
+    .metric b { font-size: 58px; line-height: .9; }
+    .metric span { color: var(--muted); font: 800 12px/1 var(--mono); text-transform: uppercase; }
+    .footnote { position: absolute; left: var(--safe-x); right: var(--safe-x); bottom: 22px; display: flex; justify-content: space-between; color: var(--muted); font: 12px/1 var(--mono); }
+    .nav { position: fixed; right: 22px; bottom: 18px; z-index: 5; display: flex; gap: 10px; color: var(--muted); font: 12px/1 var(--mono); }
+    .progress { width: 128px; height: 3px; background: #d8d8d2; overflow: hidden; }
+    .progress span { display: block; height: 100%; width: 0%; background: currentColor; transition: width 180ms ease; }
+    @media (max-width: 760px) {
+      html, body { overflow: auto; }
+      .deck { height: auto; overflow: visible; }
+      .slide { position: relative; min-height: 100vh; height: auto; opacity: 1; pointer-events: auto; transform: none; }
+      .statement, .two-col, .image-annotation, .comparison, .steps, .dash { grid-template-columns: 1fr; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" data-title="HTML Lane Benchmark">
+    <section class="slide hero active" data-layout="hero" data-title="HTML needs a production lock before it can become a reliable deck." data-role="Hook" data-theme="light">
+      <p class="kicker">01. HTML BENCHMARK</p>
+      <div class="thin-grid"></div>
+      <h1 class="hero-title">HTML needs a production lock.</h1>
+      <p class="lead">The lane only becomes reliable when story, visual system, registered layouts, and rendered QA are treated as one contract.</p>
+      <div class="rule"></div>
+      <div class="footnote"><span>Knowledge Cat / HTML lane benchmark</span><span>01</span></div>
+    </section>
+    <section class="slide statement" data-layout="statement" data-title="The enemy is not bad CSS; it is unbounded layout freedom." data-role="Tension" data-theme="dark">
+      <p class="kicker">02. TENSION</p>
+      <div>
+        <h2 class="action-title">The enemy is not bad CSS.</h2>
+        <p class="lead">The real failure is slide-by-slide invention: each page may look fine, while the deck loses rhythm, proof, and QA discipline.</p>
+      </div>
+      <div class="thin-grid"></div>
+      <div class="footnote"><span>Failure mode: unregistered layout drift</span><span>02</span></div>
+    </section>
+    <section class="slide two-col" data-layout="two-col" data-title="Story, system, and QA must be chosen before slide markup begins." data-role="Framework" data-theme="light">
+      <p class="kicker">03. OPERATING CONTRACT</p>
+      <div>
+        <h2 class="action-title">Story, system, and QA come first.</h2>
+        <p class="lead">The HTML file is the final surface. The controllable object is the production contract before it.</p>
+      </div>
+      <div class="list">
+        <div class="list-row"><strong>LANE FIT</strong><span>Use HTML for browser-native talks, fast visual iteration, and interactive delivery.</span></div>
+        <div class="list-row"><strong>VISUAL SYSTEM</strong><span>Select one registry entry and let slide roles create variation.</span></div>
+        <div class="list-row"><strong>QA ARTIFACTS</strong><span>Ship validator output, screenshot evidence, contact sheet, and a fix-loop note.</span></div>
+      </div>
+      <div class="footnote"><span>Source: Knowledge Cat production workflow</span><span>03</span></div>
+    </section>
+    <section class="slide image-annotation" data-layout="image-annotation" data-title="Local image slots make visual assets inspectable instead of decorative." data-role="Evidence" data-theme="light">
+      <p class="kicker">04. IMAGE SLOT</p>
+      <div>
+        <h2 class="action-title">Image slots must be owned.</h2>
+        <p class="lead">A local visual is useful only when it has a slide number, target ratio, alt text, and a reason to exist.</p>
+      </div>
+      <div class="image-box">
+        <img src="images/04-product-surface.svg" alt="Synthetic browser deck image slot surface" data-image-slot="04-main-16x10" data-slot-ratio="16:10">
+      </div>
+      <div class="footnote"><span>Local asset: images/04-product-surface.svg</span><span>04</span></div>
+    </section>
+    <section class="slide comparison" data-layout="comparison" data-title="Static validation catches structure before visual QA catches taste." data-role="Comparison" data-theme="dark">
+      <p class="kicker">05. VALIDATION VS TASTE</p>
+      <div>
+        <h2 class="action-title">Validation and taste catch different bugs.</h2>
+        <p class="lead">A benchmark lane needs both: deterministic checks for structure, visual artifacts for judgment.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-cell"><h3>Static validation</h3><p>Finds missing attributes, weak titles, image-slot defects, theme streaks, and unresolved markers.</p></div>
+        <div class="compare-cell"><h3>Visual QA</h3><p>Finds crowding, weak rhythm, blank render, poor image crop, and the feeling that the deck is not yet first-rate.</p></div>
+      </div>
+      <div class="footnote"><span>Both gates are required for production HTML decks</span><span>05</span></div>
+    </section>
+    <section class="slide process" data-layout="process" data-title="The benchmark path runs from memo to plan to render to fix loop." data-role="Process" data-theme="light">
+      <p class="kicker">06. PROCESS</p>
+      <h2 class="action-title">The benchmark path is a loop.</h2>
+      <div class="steps">
+        <div class="step"><b>01</b><span>Build a deck brief and ghost deck.</span></div>
+        <div class="step"><b>02</b><span>Lock visual system, layouts, and image slots.</span></div>
+        <div class="step"><b>03</b><span>Render or capture screenshots and contact sheet.</span></div>
+        <div class="step"><b>04</b><span>Fix the weakest slide, then verify again.</span></div>
+      </div>
+      <div class="footnote"><span>Production sequence for HTML lane</span><span>06</span></div>
+    </section>
+    <section class="slide system-map" data-layout="system-map" data-title="Registered layouts turn visual taste into a reusable control system." data-role="Mechanism" data-theme="dark">
+      <p class="kicker">07. LAYOUT SYSTEM</p>
+      <h2 class="action-title">Taste becomes reusable when layouts are named.</h2>
+      <div class="map">
+        <div class="wire" style="left:170px;top:130px;width:760px;height:1px"></div>
+        <div class="wire" style="left:330px;top:130px;width:1px;height:190px"></div>
+        <div class="wire" style="left:330px;top:320px;width:600px;height:1px"></div>
+        <div class="wire" style="left:930px;top:130px;width:1px;height:270px"></div>
+        <div class="node" style="left:90px;top:108px">HERO</div>
+        <div class="node" style="left:272px;top:108px">TWO-COL</div>
+        <div class="node" style="left:520px;top:108px">IMAGE SLOT</div>
+        <div class="node" style="left:872px;top:108px">VALIDATION</div>
+        <div class="node" style="left:272px;top:298px">PROCESS</div>
+        <div class="node" style="left:620px;top:298px">SYSTEM MAP</div>
+        <div class="node" style="left:872px;top:378px">QA REPORT</div>
+      </div>
+      <div class="footnote"><span>Registered layout map</span><span>07</span></div>
+    </section>
+    <section class="slide data-dashboard" data-layout="data-dashboard" data-title="A benchmark deck should leave artifacts that another agent can audit." data-role="Proof" data-theme="light">
+      <p class="kicker">08. AUDIT ARTIFACTS</p>
+      <h2 class="action-title">A benchmark deck leaves evidence.</h2>
+      <div class="dash">
+        <div class="metric"><span>registered layouts</span><b>9</b></div>
+        <div class="metric"><span>local image slots</span><b>1</b></div>
+        <div class="metric"><span>QA artifacts</span><b>4</b></div>
+      </div>
+      <p class="lead">The case includes a plan, HTML file, local image asset, screenshot artifact, contact sheet, and QA report.</p>
+      <div class="footnote"><span>Repository artifact gate</span><span>08</span></div>
+    </section>
+    <section class="slide closing-decision" data-layout="closing-decision" data-title="The next quality jump is visual evidence, not more prompt instructions." data-role="Decision" data-theme="light">
+      <p class="kicker">09. RELEASE GATE</p>
+      <h2 class="action-title">The next quality jump is visual evidence.</h2>
+      <p class="lead">Knowledge Cat becomes benchmark-grade when every serious HTML deck proves itself with screenshots, contact sheet, validator output, and a documented fix loop.</p>
+      <div class="rule"></div>
+      <div class="footnote"><span>Gate: validate, capture, inspect, repair</span><span>09</span></div>
+    </section>
+  </main>
+  <div class="nav" aria-hidden="true">
+    <span id="counter">1 / 9</span>
+    <div class="progress"><span id="progress"></span></div>
+    <span>Arrow keys</span>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress");
+    let index = 0;
+    function syncTheme(slide) {
+      document.body.classList.toggle("theme-dark", slide.dataset.theme === "dark");
+    }
+    function show(next) {
+      const previous = index;
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.classList.toggle("exit-left", i < index);
+      });
+      syncTheme(slides[index]);
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      if (previous !== index) history.replaceState(null, "", `#${index + 1}`);
+    }
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " " || event.key === "PageDown") show(index + 1);
+      if (event.key === "ArrowLeft" || event.key === "PageUp") show(index - 1);
+      if (event.key === "Home") show(0);
+      if (event.key === "End") show(slides.length - 1);
+    });
+    window.addEventListener("hashchange", () => {
+      const value = Number(location.hash.replace("#", ""));
+      if (Number.isFinite(value) && value > 0) show(value - 1);
+    });
+    const initial = Number(location.hash.replace("#", ""));
+    show(Number.isFinite(initial) && initial > 0 ? initial - 1 : 0);
+  </script>
+</body>
+</html>
