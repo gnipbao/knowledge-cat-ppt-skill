@@ -49,14 +49,25 @@ Required for a publishable native PPTX case study:
 - `deck-brief.md`
 - `deck-plan.json` or `deck-plan.md`
 - `.pptx` source output
-- rendered preview images, PDF, or contact sheet
-- PPTX text extraction log from `scripts/extract_pptx_text.py`
+- rendered preview images and a contact sheet produced from the reopened final PPTX
+- object inspection log
+- PPTX text extraction result from `scripts/extract_pptx_text.py`
+- editability report from `scripts/check_pptx_editability.py`
+- reversible object edit probe from `scripts/probe_pptx_editability.py`
 - `qa-report.md` with editability promises and exceptions
 
 Minimum command:
 
 ```bash
 python3 scripts/extract_pptx_text.py path/to/output.pptx --fail-on-placeholders
+python3 scripts/check_pptx_editability.py path/to/output.pptx --fail-on-image-only-slides
+python3 scripts/probe_pptx_editability.py path/to/output.pptx
+```
+
+Bundled reference case:
+
+```bash
+python3 scripts/check_native_pptx_case.py
 ```
 
 ### HTML Deck
@@ -131,6 +142,9 @@ The bundled check runner must include:
 - HTML QA artifact check
 - negative failure fixtures
 - PPTX text extraction self-test
+- PPTX native-object checker and negative image-only fixture
+- reversible PPTX text-object edit probe
+- bundled native PPTX case-study check
 - repository hygiene check
 
 Any skipped rendered QA must be named as a limitation, not hidden behind a quality score.

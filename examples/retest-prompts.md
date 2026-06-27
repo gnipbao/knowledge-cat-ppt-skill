@@ -157,6 +157,9 @@ Expected behavior:
 - Select `native-pptx` because the user asked for editable PowerPoint.
 - Read `references/native-pptx-recipes.md` and `references/qa-rubric.md`.
 - Run `scripts/extract_pptx_text.py path/to/output.pptx --fail-on-placeholders` when the file exists locally.
+- Run `scripts/check_pptx_editability.py` and reject image-only slides.
+- Run `scripts/probe_pptx_editability.py` on a temporary copy or perform an equivalent target-app edit check.
+- Render the reopened final PPTX and inspect every slide.
 - State editable promises and non-editable exceptions.
 - Avoid claiming full editability if slide text is flattened into images.
 
@@ -212,3 +215,25 @@ python3 scripts/run_checks.py
 ```
 
 - Do not claim final 99/100 visual quality if only fixture-level SVG screenshots exist; call it mechanism-ready and name browser-captured PNGs as the final evidence upgrade.
+
+## 16. Native PPTX Generator Evidence
+
+```md
+Use $knowledge-cat-ppt-skill. Prove that the native lane is executable, not only documented. Build the bundled native case from its deck plan, render the reopened PPTX, verify native text/chart/table/notes objects, and run a reversible edit probe.
+```
+
+Expected behavior:
+
+- Read `references/native-pptx-recipes.md` and `references/benchmark-quality-gates.md`.
+- Validate `examples/case-studies/native-editable/deck-plan.json`.
+- Use `scripts/build_native_pptx.mjs` only after preparing an `@oai/artifact-tool` workspace, or clearly name the verified native renderer used instead.
+- Produce a real `.pptx`, six final-slide previews, layout evidence, contact sheet, and inspection NDJSON.
+- Run:
+
+```bash
+python3 scripts/check_pptx_editability.py examples/case-studies/native-editable/knowledge-cat-native-editable.pptx --require-native-chart --require-native-table --require-notes --fail-on-image-only-slides
+python3 scripts/probe_pptx_editability.py examples/case-studies/native-editable/knowledge-cat-native-editable.pptx
+python3 scripts/check_native_pptx_case.py
+```
+
+- Report imported-deck editing limitations honestly instead of broadening the net-new generator claim.

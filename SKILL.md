@@ -33,7 +33,10 @@ Load only what the current task needs:
 - Use `scripts/validate_deck_plan.py` after writing a JSON deck plan. The expected shape is documented in `assets/deck-plan.schema.json`.
 - Use `scripts/init_deck_project.py` to create an HTML deck project from the bundled starter template.
 - Use `scripts/validate_html_deck.py` to statically check an HTML deck before browser QA.
+- Use `scripts/build_native_pptx.mjs` to turn a validated native deck plan into editable PowerPoint objects when `@oai/artifact-tool` is available.
 - Use `scripts/extract_pptx_text.py` to extract native PPTX text and check placeholder-like markers when editable PowerPoint quality matters.
+- Use `scripts/check_pptx_editability.py` and `scripts/probe_pptx_editability.py` before claiming that a native PPTX is editable.
+- Use `scripts/check_native_pptx_case.py` to verify the bundled native PPTX evidence package.
 - Use `scripts/run_checks.py` before release or after changing bundled scripts, examples, or schemas.
 
 ## Non-Negotiable Rules
@@ -248,11 +251,26 @@ python3 scripts/validate_html_deck.py path/to/project/index.html
 
 Each final HTML slide must declare `data-layout`, `data-title`, `data-role`, and `data-theme`. Local images must use `images/` paths plus `data-image-slot` and target ratio metadata. Treat static validation errors as blockers.
 
-For native PPTX and image-first PPTX, follow the lane-specific recipe and clearly state any capability that was delegated to another skill or tool. For native PPTX, extract text when possible:
+For native PPTX, follow `references/native-pptx-recipes.md`. A validated plan can use the bundled builder when the current environment provides `@oai/artifact-tool`:
+
+```bash
+node scripts/build_native_pptx.mjs \
+  --plan path/to/deck-plan.json \
+  --output path/to/output.pptx \
+  --workspace path/to/prepared-artifact-workspace \
+  --preview-dir path/to/screenshots \
+  --inspection path/to/inspection.ndjson
+```
+
+The builder reopens the exported PPTX before producing previews and inspection evidence. If the dependency is unavailable, compose with a verified native-PPTX skill or renderer and keep the same QA contract. For native PPTX, run:
 
 ```bash
 python3 scripts/extract_pptx_text.py path/to/output.pptx --fail-on-placeholders
+python3 scripts/check_pptx_editability.py path/to/output.pptx --fail-on-image-only-slides
+python3 scripts/probe_pptx_editability.py path/to/output.pptx
 ```
+
+For image-first PPTX, follow the lane-specific recipe and state the editability tradeoff.
 
 ### 8. QA And Iterate
 
@@ -264,7 +282,8 @@ Minimum production QA:
 2. Visual QA: render slides or open the HTML, inspect for overflow, contrast, alignment, collision, spacing, and image crop issues.
 3. Story QA: ghost deck, audience shift, duplicated ideas, weak ending.
 4. Format QA: file opens, assets resolve, fonts are reasonable, links work when promised.
-5. Fix and recheck affected slides.
+5. Native editability QA: inspect object types, reject image-only impostors, and run a reversible edit probe when editability is promised.
+6. Fix and recheck affected slides.
 
 For release or repository work, also run:
 

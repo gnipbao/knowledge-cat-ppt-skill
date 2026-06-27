@@ -64,6 +64,8 @@ For PPTX files, extract text when possible and search for placeholder patterns:
 
 ```bash
 python3 scripts/extract_pptx_text.py output.pptx --fail-on-placeholders
+python3 scripts/check_pptx_editability.py output.pptx --fail-on-image-only-slides
+python3 scripts/probe_pptx_editability.py output.pptx
 ```
 
 Use equivalent extraction tools such as `markitdown` only when the bundled helper is unavailable.
@@ -106,6 +108,8 @@ Native PPTX:
 
 - Text is selectable where promised.
 - Charts and shapes are editable where promised.
+- Native object inspection passes; no slide is an undisclosed full-slide image.
+- A reversible object edit probe or target-app edit test passes.
 - Fonts are available or have sane fallbacks.
 - Notes are present if requested.
 - File opens in PowerPoint or Keynote target.
@@ -159,4 +163,6 @@ Also check:
 - Sample HTML deck can be initialized and statically validated.
 - Negative fixtures prove validators fail on known bad artifacts.
 - PPTX text extraction self-test passes.
+- PPTX native-object and reversible edit-probe self-tests pass.
+- The bundled native case-study check passes.
 - Benchmark-quality claims follow `references/benchmark-quality-gates.md`.

@@ -43,6 +43,8 @@ PPT Master's strongest principle is that professional decks should remain editab
 
 Knowledge Cat default: professional decks start in native editable PPTX unless the user asks for HTML or visual-first output.
 
+Knowledge Cat implementation: `scripts/build_native_pptx.mjs` now turns a structured deck plan into native text, shapes, chart, table, and notes when an artifact-tool workspace is available. The bundled `native-editable` case proves the net-new path with PPTX re-import, six rendered previews, object inspection, a negative image-only fixture, and a reversible text-object mutation. Imported-deck repairs remain outside this case's proof boundary.
+
 ### HTML Is An Excellent Agent Surface
 
 Guizang and Frontend Slides show why HTML decks are strong for agent workflows: text files are easy to edit, preview, diff, and visually test. HTML is best when interaction, animation, single-file portability, or rapid visual iteration matters more than PowerPoint editability.
@@ -100,6 +102,8 @@ Knowledge Cat PPT should be a methodology toolbox:
 - `engine-routing.md`: output lane selection and tradeoffs.
 - `design-systems.md`: visual system and layout rules.
 - `native-pptx-recipes.md`: editable PowerPoint production contract.
+- `build_native_pptx.mjs`: executable plan-to-native-PPTX reference builder.
+- `check_pptx_editability.py`, `probe_pptx_editability.py`, and `check_native_pptx_case.py`: deterministic native-object and case-study gates.
 - `html-deck-recipes.md`: browser deck starter and layout recipes.
 - `html-production-lock.md`: HTML layout registration, theme rhythm, local image slot contract, screenshot handling, and validation rules.
 - `image-first-recipes.md`: visual deck prompt plan and editability contract.
@@ -116,6 +120,7 @@ Knowledge Cat PPT should be a methodology toolbox:
 
 - A pretty prompt with no build pathway.
 - A native PPTX workflow that ignores visual QA.
+- A native PPTX claim supported only by text extraction instead of object inspection and edit probing.
 - An HTML workflow that pretends to satisfy PowerPoint collaboration needs.
 - An image-first workflow that hides lack of editability.
 - Template mimicry without permission or layout analysis.

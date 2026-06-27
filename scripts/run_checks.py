@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -33,6 +34,12 @@ def main() -> int:
         [sys.executable, "scripts/validate_deck_plan.py", "examples/sample-deck-plan.json"],
     ]
 
+    node = shutil.which("node")
+    if node:
+        checks.append([node, "--check", "scripts/build_native_pptx.mjs"])
+    else:
+        print("WARNING: node not found; skipped native builder syntax check.")
+
     if not args.skip_sample_html:
         temp = Path(tempfile.mkdtemp(prefix="knowledge-cat-html-"))
         checks.append([sys.executable, "scripts/init_deck_project.py", str(temp), "--title", "Knowledge Cat Sample"])
@@ -47,6 +54,9 @@ def main() -> int:
     checks.append([sys.executable, "scripts/check_signature_pack.py", "portfolio-minimal"])
     checks.append([sys.executable, "scripts/check_failure_fixtures.py"])
     checks.append([sys.executable, "scripts/extract_pptx_text.py", "--self-test"])
+    checks.append([sys.executable, "scripts/check_pptx_editability.py", "--self-test"])
+    checks.append([sys.executable, "scripts/probe_pptx_editability.py", "--self-test"])
+    checks.append([sys.executable, "scripts/check_native_pptx_case.py"])
     checks.append([sys.executable, "scripts/check_repo.py"])
 
     for cmd in checks:

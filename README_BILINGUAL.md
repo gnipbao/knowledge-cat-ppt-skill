@@ -8,7 +8,7 @@ Story-first presentation production for AI agents.
 Knowledge Cat PPT is an open-source Agent Skill for creating, reviewing, and repairing presentation decks. It is designed for Codex, Claude Code, and other skill-aware coding agents.  
 知识猫 PPT 是一个开源 Agent Skill，用来创建、审阅和修复高质量演示文稿，兼容 Codex、Claude Code 和其他能读取 `SKILL.md` 的 Agent。
 
-Current version / 当前版本：`0.9.0`
+Current version / 当前版本：`0.10.0`
 
 ## Highlights / 亮点
 
@@ -20,6 +20,8 @@ Current version / 当前版本：`0.9.0`
 | HTML deck starter with keyboard navigation, print CSS, light/dark themes, and no external dependencies. | 内置 HTML deck 模板，支持键盘导航、打印 CSS、明暗主题且无外部依赖。 |
 | Curated 44-style template library with PPT style-site radar and Guizang-surpass signature-pack targets. | 内置 44 个 PPT 风格种子、常见风格网站雷达，以及用于超越 Guizang 的 signature pack 路线。 |
 | Portfolio Minimal HTML signature pack with 14 layouts, a 12-slide case study, QA artifacts, and a dedicated checker. | 已落地 Portfolio Minimal HTML signature pack：14 个版式、12 页案例、QA artifact 和专用校验器。 |
+| Native deck-plan-to-PPTX builder with editable text, shapes, charts, tables, and notes. | 新增 deck plan → 原生 PPTX 构建器，可生成可编辑文字、形状、图表、表格和备注。 |
+| Real native PPTX case with re-imported renders, contact sheet, object inspection, editability report, and reversible edit probe. | 新增真实原生 PPTX 案例，包含重导入渲染、联系表、对象检查、编辑性报告和可逆编辑探针。 |
 | JSON deck-plan validator, HTML validator, repository checks, GitHub Actions, and open-source release docs. | 内置 deck plan 校验、HTML 校验、仓库检查、GitHub Actions 和开源发布文档。 |
 
 ## Three Production Modes / 三种生产模式
@@ -38,8 +40,9 @@ Current version / 当前版本：`0.9.0`
 | Claude Code | Supported / 支持 | `~/.claude/skills/knowledge-cat-ppt-skill` |
 | Other skill-aware agents | Should work if they read `SKILL.md` and bundled resources / 理论支持 | Agent-specific / 取决于具体 Agent |
 
-The skill itself is plain Markdown, Python, JSON, and HTML. The bundled Python scripts use only the standard library.  
-Skill 本体由 Markdown、Python、JSON 和 HTML 组成；内置 Python 脚本只使用标准库。
+The skill itself is plain Markdown, Python, JavaScript, JSON, and HTML. Validators use only the Python standard library; the optional native builder needs Node.js plus a prepared `@oai/artifact-tool` workspace.
+
+Skill 本体由 Markdown、Python、JavaScript、JSON 和 HTML 组成；校验器只使用 Python 标准库，可选原生构建器需要 Node.js 和准备好的 `@oai/artifact-tool` workspace。
 
 ## Install / 安装
 
@@ -113,10 +116,20 @@ Use $knowledge-cat-ppt-skill. Build a browser-based HTML deck using the kc-24 Po
 
 | Lane / 模式 | Use when / 适用场景 | Main tradeoff / 主要取舍 |
 |---|---|---|
-| `native-pptx` | PowerPoint editability, team collaboration, charts, tables, notes, client decks / 需要 PowerPoint 可编辑性、团队协作、图表、表格、备注和客户交付 | Needs a PPTX-capable renderer or companion skill / 需要 PPTX 渲染器或配套 skill |
+| `native-pptx` | PowerPoint editability, team collaboration, charts, tables, notes, client decks / 需要 PowerPoint 可编辑性、团队协作、图表、表格、备注和客户交付 | Bundled builder needs a prepared artifact-tool workspace; imported-deck repairs still need a verified native editor / 内置构建器需要准备好的 artifact-tool workspace，旧 deck 修复仍需经验证的原生编辑器 |
 | `html-deck` | Web-native presentation, rapid visual iteration, browser preview, single-folder sharing / Web 演示、快速视觉迭代、浏览器预览、单文件夹分享 | Not a true editable PowerPoint file / 不是原生可编辑 PowerPoint 文件 |
 | `image-first-pptx` | Social carousel, campaign deck, visual keynote, AI-generated slide surfaces / 社交轮播、营销活动、视觉 keynote、AI 生成页面 | Lower editability / 可编辑性较弱 |
 | `review-only` | Existing deck critique, repair planning, story and evidence diagnosis / 已有 deck 诊断、修复计划、叙事和证据审阅 | Does not create a final deck until repair is requested / 不直接生成最终 deck |
+
+Native case / 原生案例：
+
+```bash
+python3 scripts/check_native_pptx_case.py
+```
+
+The case contains a real editable PPTX, six re-imported renders, a contact sheet, object inspection, an editability report, and a reversible text-object probe.
+
+案例包含真实可编辑 PPTX、6 张重导入渲染图、联系表、对象检查、编辑性报告和可逆文字对象探针。
 
 ## Validation / 验证
 

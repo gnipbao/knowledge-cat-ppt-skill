@@ -1,0 +1,67 @@
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"HOOK","textShapes":5}
+{"kind":"shape","id":"sh/nap4r65w","slide":1,"name":"cover-accent-plane","bbox":[812,0,468,720]}
+{"kind":"textbox","id":"sh/cvixczed","slide":1,"name":"cover-kicker","text":"HOOK","textPreview":"HOOK","textChars":4,"textLines":1,"bbox":[76,86,360,30]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":1,"name":"cover-title","text":"Native objects survive the handoff","textPreview":"Native objects survive the handoff","textChars":34,"textLines":1,"bbox":[76,162,650,210]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"cover-subtitle","text":"This deck proves that text, shapes, data, and notes remain editable after export.","textPreview":"This deck proves that text, shapes, data, and notes remain editable after export.","textChars":81,"textLines":1,"bbox":[76,410,620,98]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":1,"name":"cover-proof","text":"REAL TEXT\nREAL SHAPES\nREAL DATA","textPreview":"REAL TEXT | REAL SHAPES | REAL DATA","textChars":31,"textLines":3,"bbox":[868,162,300,210]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":1,"name":"cover-meta","text":"Editorial Technical Minimal","textPreview":"Editorial Technical Minimal","textChars":27,"textLines":1,"bbox":[76,616,620,24]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":"Frame editability as a testable delivery contract, not a marketing adjective."}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":2,"title":"CONTRACT","textShapes":6}
+{"kind":"textbox","id":"sh/yxobm58z","slide":2,"name":"slide-2-eyebrow","text":"CONTRACT","textPreview":"CONTRACT","textChars":8,"textLines":1,"bbox":[76,32,350,24]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":2,"name":"slide-2-number","text":"02 / 06","textPreview":"02 / 06","textChars":7,"textLines":1,"bbox":[1080,34,124,22]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":2,"name":"slide-2-action-title","text":"Editability requires four independent proofs","textPreview":"Editability requires four independent proofs","textChars":44,"textLines":1,"bbox":[76,86,1040,104]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":2,"name":"slide-2-stat","text":"4×","textPreview":"4×","textChars":2,"textLines":1,"bbox":[76,250,270,150]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":2,"name":"slide-2-message","text":"A valid native handoff proves object structure, rendered fidelity, clean copy, and documented exceptions.","textPreview":"A valid native handoff proves object structure, rendered fidelity, clean copy, and documented exceptions.","textChars":105,"textLines":1,"bbox":[390,250,760,130]}
+{"kind":"shape","id":"sh/9cvixcze","slide":2,"name":"slide-2-rule","bbox":[390,420,760,3]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":2,"name":"slide-2-items","text":"1. Object inspection\n2. Rendered QA\n3. Text extraction\n4. Exception list","textPreview":"1. Object inspection | 2. Rendered QA | 3. Text extraction | 4. Exception list","textChars":72,"textLines":4,"bbox":[390,454,760,150]}
+{"kind":"notes","id":"nt/pg3ex0nu","slide":2,"text":"Explain that any one missing proof leaves an editability claim incomplete."}
+{"kind":"slide","id":"sl/s72x4nap","slide":3,"title":"PROOF","textShapes":5}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":3,"name":"slide-3-eyebrow","text":"PROOF","textPreview":"PROOF","textChars":5,"textLines":1,"bbox":[76,32,350,24]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":3,"name":"slide-3-number","text":"03 / 06","textPreview":"03 / 06","textChars":7,"textLines":1,"bbox":[1080,34,124,22]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":3,"name":"slide-3-action-title","text":"Native charts keep the underlying data changeable","textPreview":"Native charts keep the underlying data changeable","textChars":49,"textLines":1,"bbox":[76,78,1030,104]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":3,"name":"slide-3-message","text":"The chart is a PowerPoint chart object with editable categories and series values.","textPreview":"The chart is a PowerPoint chart object with editable categories and series values.","textChars":82,"textLines":1,"bbox":[76,202,330,130]}
+{"kind":"shape","id":"sh/vy90je9c","slide":3,"name":"slide-3-accent","bbox":[76,352,260,4]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":3,"name":"slide-3-evidence","text":"Illustrative fixture values created for this benchmark","textPreview":"Illustrative fixture values created for this benchmark","textChars":54,"textLines":1,"bbox":[76,380,330,130]}
+{"kind":"chart","id":"ch/tsvu9kni","slide":3,"name":"Chart","chartType":"bar","title":"Editable evidence objects per release","bbox":[456,210,710,385]}
+{"kind":"notes","id":"nt/s72x4nap","slide":3,"text":"Open the chart data in PowerPoint and change any value to verify the promise."}
+{"kind":"slide","id":"sl/val87ed8","slide":4,"title":"EVIDENCE","textShapes":4}
+{"kind":"textbox","id":"sh/1gvy90je","slide":4,"name":"slide-4-eyebrow","text":"EVIDENCE","textPreview":"EVIDENCE","textChars":8,"textLines":1,"bbox":[76,32,350,24]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":4,"name":"slide-4-number","text":"04 / 06","textPreview":"04 / 06","textChars":7,"textLines":1,"bbox":[1080,34,124,22]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":4,"name":"slide-4-action-title","text":"Native tables make the handoff auditable","textPreview":"Native tables make the handoff auditable","textChars":40,"textLines":1,"bbox":[76,78,1030,104]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"name":"slide-4-message","text":"Each promise is paired with a concrete artifact and a pass signal.","textPreview":"Each promise is paired with a concrete artifact and a pass signal.","textChars":66,"textLines":1,"bbox":[76,188,1080,58]}
+{"kind":"table","id":"tb/8jqh0fep","slide":4,"name":"","rows":5,"cols":3,"preview":"Promise | Evidence | Pass signal","bbox":[76,272,1128,270]}
+{"kind":"notes","id":"nt/val87ed8","slide":4,"text":"Use the matrix as the release checklist for future native cases."}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"GATE","textShapes":18}
+{"kind":"textbox","id":"sh/vahoza1g","slide":5,"name":"slide-5-eyebrow","text":"GATE","textPreview":"GATE","textChars":4,"textLines":1,"bbox":[76,32,350,24]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":5,"name":"slide-5-number","text":"05 / 06","textPreview":"05 / 06","textChars":7,"textLines":1,"bbox":[1080,34,124,22]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":5,"name":"slide-5-action-title","text":"The release gate catches flattened impostors","textPreview":"The release gate catches flattened impostors","textChars":44,"textLines":1,"bbox":[76,78,1030,104]}
+{"kind":"shape","id":"sh/6hcrmhk3","slide":5,"name":"slide-5-process-line","bbox":[124,314,1032,3]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":5,"name":"slide-5-step-1-node","bbox":[96,289,50,50]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":5,"name":"slide-5-step-1-number","text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[96,299,50,24]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":5,"name":"slide-5-step-1-title","text":"Plan","textPreview":"Plan","textChars":4,"textLines":1,"bbox":[96,364,196.8,62]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":5,"name":"slide-5-step-1-detail","text":"Validate the story and native payload.","textPreview":"Validate the story and native payload.","textChars":38,"textLines":1,"bbox":[96,434,196.8,116]}
+{"kind":"shape","id":"sh/vy90je9c","slide":5,"name":"slide-5-step-2-node","bbox":[318.8,289,50,50]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":5,"name":"slide-5-step-2-number","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[318.8,299,50,24]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":5,"name":"slide-5-step-2-title","text":"Build","textPreview":"Build","textChars":5,"textLines":1,"bbox":[318.8,364,196.8,62]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":5,"name":"slide-5-step-2-detail","text":"Create real PowerPoint objects.","textPreview":"Create real PowerPoint objects.","textChars":31,"textLines":1,"bbox":[318.8,434,196.8,116]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":5,"name":"slide-5-step-3-node","bbox":[541.6,289,50,50]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":5,"name":"slide-5-step-3-number","text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[541.6,299,50,24]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":5,"name":"slide-5-step-3-title","text":"Reopen","textPreview":"Reopen","textChars":6,"textLines":1,"bbox":[541.6,364,196.8,62]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":5,"name":"slide-5-step-3-detail","text":"Import the exported PPTX again.","textPreview":"Import the exported PPTX again.","textChars":31,"textLines":1,"bbox":[541.6,434,196.8,116]}
+{"kind":"shape","id":"sh/gn29gr2p","slide":5,"name":"slide-5-step-4-node","bbox":[764.4,289,50,50]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":5,"name":"slide-5-step-4-number","text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[764.4,299,50,24]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":5,"name":"slide-5-step-4-title","text":"Render","textPreview":"Render","textChars":6,"textLines":1,"bbox":[764.4,364,196.8,62]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":5,"name":"slide-5-step-4-detail","text":"Inspect every final slide.","textPreview":"Inspect every final slide.","textChars":26,"textLines":1,"bbox":[764.4,434,196.8,116]}
+{"kind":"shape","id":"sh/vixczed8","slide":5,"name":"slide-5-step-5-node","bbox":[987.2,289,50,50]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":5,"name":"slide-5-step-5-number","text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[987.2,299,50,24]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":5,"name":"slide-5-step-5-title","text":"Inspect","textPreview":"Inspect","textChars":7,"textLines":1,"bbox":[987.2,364,196.8,62]}
+{"kind":"textbox","id":"sh/6psfil0r","slide":5,"name":"slide-5-step-5-detail","text":"Block image-only or missing-object output.","textPreview":"Block image-only or missing-object output.","textChars":42,"textLines":1,"bbox":[987.2,434,196.8,116]}
+{"kind":"notes","id":"nt/mlkjm1cf","slide":5,"text":"Stress that reopening the exported file tests the deliverable rather than the in-memory draft."}
+{"kind":"slide","id":"sl/58z25kb6","slide":6,"title":"HANDOFF","textShapes":4}
+{"kind":"shape","id":"sh/9cvixcze","slide":6,"name":"closing-bg","bbox":[0,0,1280,720]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":6,"name":"closing-kicker","text":"HANDOFF","textPreview":"HANDOFF","textChars":7,"textLines":1,"bbox":[76,82,300,28]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":6,"name":"closing-title","text":"Every editable promise now leaves evidence","textPreview":"Every editable promise now leaves evidence","textChars":42,"textLines":1,"bbox":[76,164,1000,180]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":6,"name":"closing-rule","bbox":[76,390,220,5]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":6,"name":"closing-message","text":"The deck, previews, inspection log, editability report, and QA record travel together.","textPreview":"The deck, previews, inspection log, editability report, and QA record travel together.","textChars":86,"textLines":1,"bbox":[76,430,830,100]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":6,"name":"closing-meta","text":"Native objects survive the handoff","textPreview":"Native objects survive the handoff","textChars":34,"textLines":1,"bbox":[76,620,700,24]}
+{"kind":"notes","id":"nt/58z25kb6","slide":6,"text":"Close by making the evidence package the reusable definition of done."}
