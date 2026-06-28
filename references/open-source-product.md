@@ -25,7 +25,7 @@ For this project:
 - `references/`: detailed workflows loaded only when needed.
 - `assets/`: templates, schemas, and reusable output resources.
 - `scripts/`: deterministic checks and setup helpers.
-- `examples/`: retest prompts, sample artifacts, case studies, and failure fixtures.
+- `examples/`: retest prompts, sample artifacts, case studies, and failure fixtures, including a real native PPTX evidence package.
 - `references/style-template-library.md`: curated style seeds, external style-site radar, and signature-pack targets.
 - `assets/html-signature-packs/`: reusable HTML signature packs with layout registries and templates.
 - `scripts/install_skill.py`: local install helper for Codex or Claude Code.
@@ -57,6 +57,9 @@ Scripts:
 - [ ] validators have at least one bundled passing sample.
 - [ ] validators have negative fixtures that prove known bad examples fail.
 - [ ] PPTX text extraction has a bundled self-test.
+- [ ] native PPTX object inspection rejects image-only impostors.
+- [ ] reversible PPTX object edit probe has a bundled self-test.
+- [ ] native PPTX case includes a real `.pptx`, re-imported previews, contact sheet, inspection log, editability report, and QA report.
 - [ ] install script has overwrite protection and ignores caches.
 
 Examples:
@@ -64,6 +67,7 @@ Examples:
 - [ ] sample plan passes validation.
 - [ ] sample HTML can be generated and validates.
 - [ ] benchmark case studies declare their artifact contract and QA evidence.
+- [ ] the native case passes `python3 scripts/check_native_pptx_case.py`.
 
 Docs:
 - [ ] README includes install, usage, layout, validation, and license.

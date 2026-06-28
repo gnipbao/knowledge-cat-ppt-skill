@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "method": "copy PPTX -> mutate one native a:t text object -> reopen ZIP/XML -> verify replacement",
+  "search": "Native objects survive the handoff",
+  "replacement": "Native objects survive the handoff · EDIT PROBE",
+  "changed_slide_part": "ppt/slides/slide1.xml",
+  "replacement_count": 1,
+  "probe_package_valid": true,
+  "probe_file_retained": false,
+  "original_unchanged": true,
+  "original_sha256": "416d92dfb262d36e057c99cf8a9c75e620a0f6c7c6947a0665753862d58b3a4f",
+  "probe_sha256": "ccfe1c33d6efd695e211e92208610d0ac937822efa75c6cfc55f53dcf36f446b"
+}

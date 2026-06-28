@@ -35,6 +35,16 @@ VALID_LANES = {
     "review-only",
 }
 
+VALID_NATIVE_KINDS = {
+    "cover",
+    "statement",
+    "chart",
+    "table",
+    "process",
+    "closing",
+    "default",
+}
+
 WEAK_TOPIC_TITLES = {
     "agenda",
     "appendix",
@@ -152,6 +162,58 @@ def validate_plan(plan: Any) -> tuple[list[str], list[str]]:
             errors.append(f"{prefix}.source_refs must be an array when present")
         if evidence == [] and source_refs == []:
             warnings.append(f"{prefix} has no evidence or source references")
+
+        native = slide.get("native_content")
+        if native is not None:
+            if not isinstance(native, dict):
+                errors.append(f"{prefix}.native_content must be an object when present")
+            else:
+                kind = native.get("kind")
+                if kind not in VALID_NATIVE_KINDS:
+                    errors.append(
+                        f"{prefix}.native_content.kind must be one of: "
+                        + ", ".join(sorted(VALID_NATIVE_KINDS))
+                    )
+                if kind == "chart":
+                    chart = native.get("chart")
+                    if not isinstance(chart, dict):
+                        errors.append(f"{prefix}.native_content.chart must be an object")
+                    else:
+                        categories = chart.get("categories")
+                        series = chart.get("series")
+                        if not isinstance(categories, list) or not categories:
+                            errors.append(f"{prefix}.native_content.chart.categories must be a nonempty array")
+                        if not isinstance(series, list) or not series:
+                            errors.append(f"{prefix}.native_content.chart.series must be a nonempty array")
+                        elif isinstance(categories, list):
+                            for series_index, item in enumerate(series, start=1):
+                                values = item.get("values") if isinstance(item, dict) else None
+                                if not isinstance(values, list) or len(values) != len(categories):
+                                    errors.append(
+                                        f"{prefix}.native_content.chart.series[{series_index}] values "
+                                        "must match category count"
+                                    )
+                if kind == "table":
+                    table = native.get("table")
+                    if not isinstance(table, dict):
+                        errors.append(f"{prefix}.native_content.table must be an object")
+                    else:
+                        headers = table.get("headers")
+                        rows = table.get("rows")
+                        if not isinstance(headers, list) or not headers:
+                            errors.append(f"{prefix}.native_content.table.headers must be a nonempty array")
+                        if not isinstance(rows, list) or not rows:
+                            errors.append(f"{prefix}.native_content.table.rows must be a nonempty array")
+                        elif isinstance(headers, list):
+                            for row_index, row in enumerate(rows, start=1):
+                                if not isinstance(row, list) or len(row) != len(headers):
+                                    errors.append(
+                                        f"{prefix}.native_content.table.rows[{row_index}] must match header count"
+                                    )
+                if kind == "process":
+                    steps = native.get("steps")
+                    if not isinstance(steps, list) or len(steps) < 3:
+                        errors.append(f"{prefix}.native_content.steps must contain at least 3 steps")
 
     if slides:
         expected = list(range(1, len(slides) + 1))

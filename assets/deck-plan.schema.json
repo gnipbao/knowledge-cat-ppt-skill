@@ -98,6 +98,82 @@
           "asset_needs": {
             "type": "array",
             "items": { "type": "string" }
+          },
+          "native_content": {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": ["cover", "statement", "chart", "table", "process", "closing", "default"]
+              },
+              "stat": { "type": "string" },
+              "items": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "chart": {
+                "type": "object",
+                "required": ["categories", "series"],
+                "properties": {
+                  "type": { "type": "string" },
+                  "title": { "type": "string" },
+                  "categories": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                  },
+                  "series": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": ["name", "values"],
+                      "properties": {
+                        "name": { "type": "string" },
+                        "values": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": { "type": "number" }
+                        },
+                        "fill": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              },
+              "table": {
+                "type": "object",
+                "required": ["headers", "rows"],
+                "properties": {
+                  "headers": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                  },
+                  "rows": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "array",
+                      "items": { "type": ["string", "number"] }
+                    }
+                  }
+                }
+              },
+              "steps": {
+                "type": "array",
+                "minItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": ["title"],
+                  "properties": {
+                    "title": { "type": "string" },
+                    "detail": { "type": "string" }
+                  }
+                }
+              }
+            }
           }
         }
       }

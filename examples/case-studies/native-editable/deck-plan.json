@@ -1,0 +1,131 @@
+{
+  "deck": {
+    "title": "Native objects survive the handoff",
+    "audience": "Presentation-producing agents and maintainers evaluating PPTX editability",
+    "outcome": "Require evidence before calling a generated PowerPoint editable",
+    "main_promise": "A native PPTX is a package of editable objects plus proof, not merely a file extension",
+    "narrative_spine": "Claim -> contract -> proof -> evidence -> gate -> handoff",
+    "output_lane": "native-pptx",
+    "format": "16:9 PowerPoint",
+    "slide_count": 6,
+    "design_posture": "Editorial Technical Minimal",
+    "assumptions": [
+      "The benchmark is about the PPTX production mechanism, not external market facts",
+      "No decorative images are needed because native-object proof is the main visual"
+    ]
+  },
+  "slides": [
+    {
+      "number": 1,
+      "layout": "cover",
+      "action_title": "Native objects survive the handoff",
+      "role": "Hook",
+      "key_message": "This deck proves that text, shapes, data, and notes remain editable after export.",
+      "evidence": ["Artifact-tool re-import inspection", "OOXML package inspection"],
+      "visual": "Minimal split cover with native-object proof statement",
+      "speaker_note": "Frame editability as a testable delivery contract, not a marketing adjective.",
+      "source_refs": ["references/native-pptx-recipes.md"],
+      "asset_needs": [],
+      "native_content": {"kind": "cover"}
+    },
+    {
+      "number": 2,
+      "layout": "statement",
+      "action_title": "Editability requires four independent proofs",
+      "role": "Contract",
+      "key_message": "A valid native handoff proves object structure, rendered fidelity, clean copy, and documented exceptions.",
+      "evidence": ["Object inspection", "Rendered QA", "Text extraction", "Exception list"],
+      "visual": "Large four-times proof marker with a numbered contract",
+      "speaker_note": "Explain that any one missing proof leaves an editability claim incomplete.",
+      "source_refs": ["references/benchmark-quality-gates.md"],
+      "asset_needs": [],
+      "native_content": {
+        "kind": "statement",
+        "stat": "4×",
+        "items": ["Object inspection", "Rendered QA", "Text extraction", "Exception list"]
+      }
+    },
+    {
+      "number": 3,
+      "layout": "chart",
+      "action_title": "Native charts keep the underlying data changeable",
+      "role": "Proof",
+      "key_message": "The chart is a PowerPoint chart object with editable categories and series values.",
+      "evidence": ["Illustrative fixture values created for this benchmark"],
+      "visual": "Editable clustered column chart",
+      "speaker_note": "Open the chart data in PowerPoint and change any value to verify the promise.",
+      "source_refs": ["examples/case-studies/native-editable/deck-plan.json"],
+      "asset_needs": [],
+      "native_content": {
+        "kind": "chart",
+        "chart": {
+          "type": "bar",
+          "title": "Editable evidence objects per release",
+          "categories": ["Plan", "Text", "Chart", "Table", "Notes"],
+          "series": [
+            {"name": "Objects", "values": [1, 18, 1, 1, 6], "fill": "#E95D45"}
+          ]
+        }
+      }
+    },
+    {
+      "number": 4,
+      "layout": "table",
+      "action_title": "Native tables make the handoff auditable",
+      "role": "Evidence",
+      "key_message": "Each promise is paired with a concrete artifact and a pass signal.",
+      "evidence": ["Bundled case-study artifact contract"],
+      "visual": "Editable evidence matrix",
+      "speaker_note": "Use the matrix as the release checklist for future native cases.",
+      "source_refs": ["references/benchmark-quality-gates.md"],
+      "asset_needs": [],
+      "native_content": {
+        "kind": "table",
+        "table": {
+          "headers": ["Promise", "Evidence", "Pass signal"],
+          "rows": [
+            ["Editable text", "Text extraction", "No placeholders"],
+            ["Editable data", "Chart and table parts", "Native objects found"],
+            ["Visual fidelity", "Six rendered PNGs", "1280 × 720"],
+            ["Presenter support", "Speaker-note parts", "One per slide"]
+          ]
+        }
+      }
+    },
+    {
+      "number": 5,
+      "layout": "process",
+      "action_title": "The release gate catches flattened impostors",
+      "role": "Gate",
+      "key_message": "Build, reopen, render, inspect, and only then accept the native lane.",
+      "evidence": ["Negative image-only fixture", "Artifact-tool re-import"],
+      "visual": "Five-step native PPTX release path",
+      "speaker_note": "Stress that reopening the exported file tests the deliverable rather than the in-memory draft.",
+      "source_refs": ["scripts/check_pptx_editability.py"],
+      "asset_needs": [],
+      "native_content": {
+        "kind": "process",
+        "steps": [
+          {"title": "Plan", "detail": "Validate the story and native payload."},
+          {"title": "Build", "detail": "Create real PowerPoint objects."},
+          {"title": "Reopen", "detail": "Import the exported PPTX again."},
+          {"title": "Render", "detail": "Inspect every final slide."},
+          {"title": "Inspect", "detail": "Block image-only or missing-object output."}
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "layout": "closing",
+      "action_title": "Every editable promise now leaves evidence",
+      "role": "Handoff",
+      "key_message": "The deck, previews, inspection log, editability report, and QA record travel together.",
+      "evidence": ["Native benchmark evidence package"],
+      "visual": "Dark closing statement with proof accent",
+      "speaker_note": "Close by making the evidence package the reusable definition of done.",
+      "source_refs": ["examples/case-studies/native-editable/qa-report.md"],
+      "asset_needs": [],
+      "native_content": {"kind": "closing"}
+    }
+  ]
+}

@@ -78,6 +78,7 @@ Before building, read `references/native-pptx-recipes.md`.
 
 Preferred tools, depending on what is available:
 
+- The bundled `scripts/build_native_pptx.mjs` deck-plan builder when an `@oai/artifact-tool` workspace is available.
 - A dedicated presentation/PPTX skill or plugin.
 - PPT Master if installed and the user accepts its workflow.
 - PptxGenJS for programmable layouts and charts.
@@ -91,6 +92,8 @@ Required checks:
 - Charts/tables are editable when promised.
 - Speaker notes are present if requested.
 - Placeholder text is gone.
+- Native object inspection passes and image-only slides are rejected.
+- A reversible object edit probe or target-app edit test passes when editability is promised.
 - Rendered slides do not overflow.
 
 ### HTML Deck

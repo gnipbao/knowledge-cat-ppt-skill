@@ -1,0 +1,73 @@
+{
+  "path": "examples/case-studies/native-editable/knowledge-cat-native-editable.pptx",
+  "slide_count": 6,
+  "notes_count": 6,
+  "chart_parts": 1,
+  "media_parts": 0,
+  "totals": {
+    "text_shapes": 42,
+    "text_runs": 47,
+    "shapes": 53,
+    "pictures": 0,
+    "charts": 1,
+    "tables": 1
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "text_shapes": 5,
+      "text_runs": 7,
+      "shapes": 6,
+      "pictures": 0,
+      "charts": 0,
+      "tables": 0
+    },
+    {
+      "slide": 2,
+      "text_shapes": 6,
+      "text_runs": 9,
+      "shapes": 7,
+      "pictures": 0,
+      "charts": 0,
+      "tables": 0
+    },
+    {
+      "slide": 3,
+      "text_shapes": 5,
+      "text_runs": 5,
+      "shapes": 6,
+      "pictures": 0,
+      "charts": 1,
+      "tables": 0
+    },
+    {
+      "slide": 4,
+      "text_shapes": 4,
+      "text_runs": 4,
+      "shapes": 4,
+      "pictures": 0,
+      "charts": 0,
+      "tables": 1
+    },
+    {
+      "slide": 5,
+      "text_shapes": 18,
+      "text_runs": 18,
+      "shapes": 24,
+      "pictures": 0,
+      "charts": 0,
+      "tables": 0
+    },
+    {
+      "slide": 6,
+      "text_shapes": 4,
+      "text_runs": 4,
+      "shapes": 6,
+      "pictures": 0,
+      "charts": 0,
+      "tables": 0
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

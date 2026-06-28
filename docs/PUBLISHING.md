@@ -63,5 +63,7 @@ presentation-design
 - [ ] GitHub Actions passes on `main`.
 - [ ] At least one sample deck plan validates.
 - [ ] At least one sample HTML deck opens in a browser.
+- [ ] `python3 scripts/check_native_pptx_case.py` passes against the committed native PPTX evidence package.
+- [ ] Native editability claims match `editability-report.json`, `edit-probe.json`, and the documented exception list.
 - [ ] Security and contribution docs are present.
 - [ ] No private files or generated caches are committed.

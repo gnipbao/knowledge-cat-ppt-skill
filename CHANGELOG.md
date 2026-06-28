@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.10.0 - Native Editable PPTX Evidence Loop
+
+- Added `scripts/build_native_pptx.mjs`, a deck-plan-to-PPTX generator that creates native text, shapes, charts, tables, and speaker notes with `@oai/artifact-tool`.
+- Added a six-slide native PPTX case study with the real `.pptx`, re-imported slide renders, contact sheet, layout JSON, object inspection, editability report, reversible text-object probe, and QA report.
+- Added `scripts/check_pptx_editability.py` with native-object counts, chart/table/notes gates, and a negative image-only fixture.
+- Added `scripts/probe_pptx_editability.py` to perform a reversible native DrawingML text-object mutation on a temporary PPTX copy.
+- Added `scripts/check_native_pptx_case.py` and wired all native case gates into `scripts/run_checks.py`.
+- Extended the deck-plan schema and validator with structured `native_content` payloads for cover, statement, chart, table, process, and closing slides.
+- Updated runtime instructions, benchmark contracts, public docs, roadmap, and repository hygiene requirements for the native lane.
+- Recorded the current imported-deck limitation: artifact-tool re-import inspection works, but the import/edit/re-export probe did not persist the changed text in this environment, so arbitrary imported-deck repairs remain delegated to a verified native editor.
+
 ## 0.9.0 - Portfolio Minimal Signature Pack
 
 - Added the `kc-24` Portfolio Minimal HTML signature pack with a reusable template, 14-layout registry, and pack contract.

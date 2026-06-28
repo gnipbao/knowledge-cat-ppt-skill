@@ -48,7 +48,10 @@
 - Promote `references/html-visual-systems.md` into the default HTML production path.
 - Add browser-captured PNG screenshots for all benchmark HTML cases.
 - Add a contact-sheet review rubric that scores visual rhythm separately from static validation.
-- Add a minimal native PPTX example when a stable renderer is selected.
+- [x] Add a native PPTX generator backed by a selected renderer.
+- [x] Add a real native PPTX case with editable text, shapes, chart, table, and notes.
+- [x] Add re-imported PNG previews, contact sheet, object inspection, editability report, and reversible edit probe.
+- [x] Add negative image-only and object-mutation self-tests.
 
 ## 1.0.0 - Stable Skill Contract
 
